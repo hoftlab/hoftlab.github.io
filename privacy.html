@@ -37,7 +37,7 @@
 <p class="meta">움짤 스튜디오 / GIF Studio (Android, <code>com.hoftlab.gifmaker</code>) · 운영자 hoftlab · 최종 수정 2026-10-09</p>
 <nav><a href="#en">English</a></nav>
 
-<p>움짤 스튜디오(이하 "앱")는 사진·영상으로 GIF와 짧은 영상을 만드는 편집 앱입니다. 앱은 회원 가입이 없고, 사용자가 편집하는 미디어를 개발자 서버로 보내지 않습니다.</p>
+<p>움짤 스튜디오(이하 "앱")는 사진·영상으로 GIF와 짧은 영상을 만드는 편집 앱입니다. 앱은 회원 가입이 없고, 사용자가 편집하는 미디어를 개발자 서버로 보내지 않습니다. 현재 버전은 Pro 구매 기능을 제공하지 않으며, 아래 Pro 항목은 구매 기능이 추가된 이후에 적용됩니다.</p>
 
 <h2>1. 기기 안에서 처리하는 정보</h2>
 <p>앱은 사용자가 고른 사진·영상·GIF·오디오와 카메라로 촬영한 이미지를 기기 안에서 편집합니다. 편집 설정, 선택한 파일의 이름·길이·크기, 초안, 타임라인 프로젝트, 내보낸 결과를 기능 제공과 작업 복구에 사용합니다. 카메라 권한은 카메라 기능에만 쓰며 기기 설정에서 언제든 철회할 수 있습니다.</p>
@@ -46,7 +46,7 @@
 <h2>2. 외부로 전송되는 정보</h2>
 <ul>
   <li><strong>Pro 구매:</strong> 결제와 결제 수단 정보는 Google Play가 처리합니다. 구매를 확인·복원하기 위해 앱이 실행될 때 Google Play 구매 토큰과 무작위 확인 값을 개발자의 구매 검증 서버로 보내고, 서버는 Google Play에 구매 상태를 조회합니다. 앱에는 원문 토큰 대신 해시와 서명된 확인 결과(최대 24시간 유효)만 암호화해 보관합니다.</li>
-  <li><strong>선택형 보상 광고:</strong> 사용자가 "광고 보고 워터마크 없이 내보내기"를 누를 때만 Google AdMob 광고를 불러옵니다. 이때 Google은 동의 화면에서 허용된 범위에서 광고 ID, IP 주소, 기기·앱 정보를 이용해 광고를 표시하고 측정할 수 있습니다. 해당 지역에서는 앱 설정의 "광고 개인정보 선택"에서 동의를 바꿀 수 있습니다. 광고 보상(다음 내보내기 1회 워터마크 제거)은 기기 메모리에만 있고 저장하지 않습니다. Google의 데이터 처리는 <a href="https://policies.google.com/technologies/partner-sites">Google 파트너 사이트 정책</a>을 따릅니다.</li>
+  <li><strong>광고(Google AdMob):</strong> 결과 화면 아래에 작은 배너 광고가 표시되고, 전체 화면 광고는 사용자가 "광고 보고 워터마크 없이 내보내기"를 누를 때만 불러옵니다. 편집 중에는 광고를 표시하지 않습니다. 이때 Google은 동의 화면에서 허용된 범위에서 광고 ID, IP 주소, 기기·앱 정보를 이용해 광고를 표시하고 측정할 수 있습니다. 해당 지역에서는 앱 설정의 "광고 개인정보 선택"에서 동의를 바꿀 수 있습니다. 광고 보상(다음 내보내기 1회 워터마크 제거)은 기기 메모리에만 있고 저장하지 않습니다. Google의 데이터 처리는 <a href="https://policies.google.com/technologies/partner-sites">Google 파트너 사이트 정책</a>을 따릅니다.</li>
   <li><strong>공유:</strong> 사용자가 공유를 실행하면 선택한 결과물 또는 오류 보고서를 사용자가 고른 앱으로 전달합니다. 이후 처리는 해당 앱의 정책을 따릅니다.</li>
 </ul>
 <p>미디어, 초안, 프로젝트, 오류 보고서는 자동으로 전송하지 않습니다. 분석 도구는 사용하지 않습니다.</p>
@@ -76,7 +76,7 @@
 <h1>Privacy Policy</h1>
 <p class="meta">GIF Studio (Android, <code>com.hoftlab.gifmaker</code>) · Operator: hoftlab · Last updated 2026-10-09</p>
 
-<p>GIF Studio ("the app") edits photos and videos into GIFs and short videos. It has no accounts and never uploads the media you edit to the developer's servers.</p>
+<p>GIF Studio ("the app") edits photos and videos into GIFs and short videos. It has no accounts and never uploads the media you edit to the developer's servers. Pro purchases are not offered yet; the Pro section below applies once they are added.</p>
 
 <h2>1. Information processed on your device</h2>
 <p>Photos, videos, GIFs, audio you pick and images you take with the camera are edited on the device. Edit settings, the name, length and size of selected files, drafts, timeline projects and exported results are used to provide the features and recover your work. Camera permission is used only for the camera feature and can be revoked in system settings. Media imported into the timeline is copied to app-private storage; original files are never modified.</p>
@@ -84,7 +84,7 @@
 <h2>2. Information sent off the device</h2>
 <ul>
   <li><strong>Pro purchase:</strong> Google Play handles payments and payment details. To verify and restore Pro, including at app launch, the app sends the Google Play purchase token and a random nonce to the developer's verification server, which checks the purchase with Google Play. The app keeps only a hash and a signed result (valid for up to 24 hours), encrypted on the device.</li>
-  <li><strong>Optional rewarded ads:</strong> Google AdMob ads load only when you tap "Watch an ad to export once without the watermark". Google may then use your advertising ID, IP address and device/app information to show and measure ads, within the consent you gave. Where required, you can change consent in Settings › "Ad privacy choices". The reward is kept only in memory. See <a href="https://policies.google.com/technologies/partner-sites">how Google uses information from partner apps</a>.</li>
+  <li><strong>Ads (Google AdMob):</strong> A small banner appears on result screens. Full-screen ads load only when you tap "Watch an ad to export once without the watermark". No ads are shown while editing. Google may then use your advertising ID, IP address and device/app information to show and measure ads, within the consent you gave. Where required, you can change consent in Settings › "Ad privacy choices". The reward is kept only in memory. See <a href="https://policies.google.com/technologies/partner-sites">how Google uses information from partner apps</a>.</li>
   <li><strong>Sharing:</strong> When you share, the selected result or crash report goes to the app you choose and is then governed by its policy.</li>
 </ul>
 <p>Media, drafts, projects and crash reports are never sent automatically. No analytics tools are used.</p>
