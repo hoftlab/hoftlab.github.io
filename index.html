@@ -3,25 +3,258 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>hoftlab</title>
+<title>움짤 스튜디오 · GIF Studio — hoftlab</title>
+<meta name="description" content="사진과 영상으로 움짤(GIF)과 짧은 영상을 만드는 Android 편집 앱. 타임라인, 배속, 자막, 스티커까지 기기 안에서.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta property="og:title" content="움짤 스튜디오 · GIF Studio">
+<meta property="og:description" content="사진과 영상으로 움짤과 짧은 영상을 만드는 Android 편집 앱">
+<meta property="og:image" content="https://hoftlab.github.io/img/home.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-  :root { --bg: #ffffff; --fg: #1d1b20; --muted: #5f5b66; --accent: #6750a4; }
-  @media (prefers-color-scheme: dark) { :root { --bg: #141218; --fg: #e6e0e9; --muted: #b0a9b9; --accent: #cfbcff; } }
-  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.7 system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; }
-  main { max-width: 640px; margin: 0 auto; padding: 48px 16px; }
-  h1 { margin: 0 0 8px; } p { color: var(--muted); } a { color: var(--accent); }
+  :root {
+    --bg: #faf8ff; --surface: #ffffff; --fg: #1b1530; --muted: #5d5872; --line: #ebe6f7;
+    --brand1: #7b5cff; --brand2: #ff4f9a; --accent: #5b3df5; --chip: #f1ecff;
+    --shadow: 0 24px 60px -24px rgba(91, 61, 245, .35);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0f0c1a; --surface: #191428; --fg: #f1edff; --muted: #a9a2c0; --line: #2a2340; --accent: #b6a3ff; --chip: #241d3a;
+      --shadow: 0 24px 60px -24px rgba(0, 0, 0, .7); }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.65 "Noto Sans KR", system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  header.top { position: sticky; top: 0; z-index: 10; backdrop-filter: saturate(1.4) blur(14px); background: color-mix(in srgb, var(--bg) 78%, transparent); border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; align-items: center; gap: 12px; height: 60px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; color: var(--fg); letter-spacing: -.01em; }
+  .brand img { width: 32px; height: 32px; border-radius: 9px; }
+  .brand:hover { text-decoration: none; }
+  nav.links { margin-left: auto; display: flex; gap: 18px; align-items: center; font-size: .95rem; }
+  nav.links a { color: var(--muted); }
+  .lang { border: 1px solid var(--line); background: var(--surface); color: var(--fg); border-radius: 999px; padding: 5px 12px; font: inherit; font-size: .85rem; cursor: pointer; }
+
+  .hero { position: relative; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: -40% -10% auto -10%; height: 120%; background:
+      radial-gradient(40% 50% at 20% 30%, color-mix(in srgb, var(--brand1) 38%, transparent), transparent 70%),
+      radial-gradient(35% 45% at 80% 20%, color-mix(in srgb, var(--brand2) 30%, transparent), transparent 70%); filter: blur(10px); z-index: -1; }
+  .hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; padding-top: 72px; padding-bottom: 72px; }
+  .badge { display: inline-flex; align-items: center; gap: 8px; background: var(--chip); color: var(--accent); font-weight: 700; font-size: .85rem; padding: 6px 12px; border-radius: 999px; }
+  .badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, var(--brand1), var(--brand2)); }
+  h1 { font-size: clamp(2.4rem, 6vw, 3.8rem); line-height: 1.08; letter-spacing: -.035em; margin: 18px 0 6px; font-weight: 900; }
+  h1 .grad { background: linear-gradient(120deg, var(--brand1), var(--brand2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .sub { font-size: 1.15rem; color: var(--muted); margin: 0 0 28px; max-width: 30em; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 20px; border-radius: 14px; font-weight: 700; }
+  .btn.primary { background: linear-gradient(120deg, var(--brand1), var(--brand2)); color: #fff; box-shadow: var(--shadow); cursor: default; }
+  .btn.primary:hover { text-decoration: none; }
+  .btn.ghost { border: 1px solid var(--line); background: var(--surface); color: var(--fg); }
+  .note { font-size: .85rem; color: var(--muted); margin-top: 14px; }
+
+  .phones { position: relative; height: 560px; }
+  .phone { position: absolute; width: 250px; border-radius: 34px; padding: 9px; background: #121018; box-shadow: var(--shadow), 0 0 0 1px rgba(255,255,255,.06) inset; }
+  .phone img { display: block; width: 100%; border-radius: 26px; aspect-ratio: 540 / 1122; object-fit: cover; background: #222; }
+  .phone.a { left: 4%; top: 40px; transform: rotate(-6deg); }
+  .phone.b { right: 4%; top: 0; transform: rotate(4deg); z-index: 2; }
+
+  section { padding: 72px 0; }
+  .eyebrow { color: var(--accent); font-weight: 700; font-size: .9rem; letter-spacing: .04em; }
+  h2 { font-size: clamp(1.7rem, 3.6vw, 2.3rem); letter-spacing: -.025em; line-height: 1.2; margin: 6px 0 12px; }
+  .lead { color: var(--muted); max-width: 36em; margin: 0 0 36px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 22px; }
+  .card .ico { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 12px; background: var(--chip); font-size: 1.35rem; margin-bottom: 12px; }
+  .card h3 { margin: 0 0 4px; font-size: 1.05rem; }
+  .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .split .shot { display: flex; justify-content: center; }
+  .split .phone { position: static; transform: none; width: 280px; }
+  ul.check { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  ul.check li { padding-left: 30px; position: relative; }
+  ul.check li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: .75rem; font-weight: 900; color: #fff; background: linear-gradient(135deg, var(--brand1), var(--brand2)); }
+
+  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .plan { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 24px; }
+  .plan.pro { border: 0; background: linear-gradient(var(--surface), var(--surface)) padding-box, linear-gradient(120deg, var(--brand1), var(--brand2)) border-box; border: 2px solid transparent; }
+  .plan h3 { margin: 0 0 6px; }
+  .plan p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+  .privacy { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 32px; display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: center; }
+  .privacy .big { font-size: 2.4rem; }
+
+  footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted); font-size: .9rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; }
+  footer .sp { margin-left: auto; }
+
+  html:not([lang="en"]) [data-en], html[lang="en"] [data-ko] { display: none !important; }
+
+  @media (max-width: 860px) {
+    .hero .wrap, .split { grid-template-columns: 1fr; }
+    .hero .wrap { padding-top: 40px; padding-bottom: 32px; gap: 8px; }
+    .phones { height: 470px; max-width: 420px; margin: 0 auto; width: 100%; }
+    .phone { width: 210px; }
+    .grid, .plans { grid-template-columns: 1fr; }
+    nav.links a.hide-sm { display: none; }
+    .split .shot { order: -1; }
+    .privacy { grid-template-columns: 1fr; padding: 24px; }
+    section { padding: 52px 0; }
+  }
 </style>
 </head>
 <body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="icon.svg" alt=""><span data-ko>움짤 스튜디오</span><span data-en>GIF Studio</span></a>
+    <nav class="links">
+      <a class="hide-sm" href="#features"><span data-ko>기능</span><span data-en>Features</span></a>
+      <a class="hide-sm" href="privacy.html"><span data-ko>개인정보</span><span data-en>Privacy</span></a>
+      <button class="lang" id="lang" type="button" aria-label="Language">EN</button>
+    </nav>
+  </div>
+</header>
+
 <main>
-<h1>hoftlab</h1>
-<p>앱 개발자 hoftlab의 페이지입니다.</p>
-<h2>움짤 스튜디오 / GIF Studio</h2>
-<p>사진과 영상으로 GIF와 짧은 영상을 만드는 Android 편집 앱.</p>
-<ul>
-  <li><a href="privacy.html">개인정보처리방침 / Privacy Policy</a></li>
-  <li>문의 / Contact: <a href="mailto:hoftlab@gmail.com">hoftlab@gmail.com</a></li>
-</ul>
+<section class="hero" style="padding:0">
+  <div class="wrap">
+    <div>
+      <span class="badge"><span data-ko>Android · 출시 준비 중</span><span data-en>Android · Coming soon</span></span>
+      <h1 data-ko>영상 몇 개로<br><span class="grad">움짤 한 편.</span></h1>
+      <h1 data-en>Turn clips into<br><span class="grad">perfect GIFs.</span></h1>
+      <p class="sub" data-ko>사진과 영상을 이어 붙이고, 속도를 바꾸고, 자막과 스티커를 얹어 GIF·MP4로. 모든 편집은 휴대폰 안에서 끝납니다.</p>
+      <p class="sub" data-en>Stitch photos and videos, change speed, add captions and stickers, then export GIF or MP4. Every edit happens on your phone.</p>
+      <div class="cta">
+        <span class="btn primary" aria-disabled="true"><span data-ko>Google Play 출시 예정</span><span data-en>Coming to Google Play</span></span>
+        <a class="btn ghost" href="#features"><span data-ko>기능 보기</span><span data-en>See features</span></a>
+      </div>
+      <p class="note" data-ko>12개 언어 지원 · 회원 가입 없음</p>
+      <p class="note" data-en>12 languages · No sign-up</p>
+    </div>
+    <div class="phones" aria-hidden="true">
+      <div class="phone a"><img src="img/home.webp" alt="" loading="eager"></div>
+      <div class="phone b"><img src="img/timeline.webp" alt="" loading="eager"></div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="eyebrow" data-ko>기능</div><div class="eyebrow" data-en>FEATURES</div>
+    <h2 data-ko>짧고 재밌는 영상에 필요한 것만</h2>
+    <h2 data-en>Everything a short, fun clip needs</h2>
+    <p class="lead" data-ko>동영상·사진·카메라·GIF 어디서 시작해도 몇 번의 탭으로 공유할 수 있는 결과가 나옵니다.</p>
+    <p class="lead" data-en>Start from a video, photos, the camera or an existing GIF and get something shareable in a few taps.</p>
+    <div class="grid">
+      <div class="card"><div class="ico">🎞️</div>
+        <h3 data-ko>멀티트랙 타임라인</h3><h3 data-en>Multitrack timeline</h3>
+        <p data-ko>여러 영상과 사진, 화면 속 화면 레이어, 배경 음악을 한 타임라인에서.</p>
+        <p data-en>Videos, photos, picture-in-picture layers and music on one timeline.</p></div>
+      <div class="card"><div class="ico">⏩</div>
+        <h3 data-ko>배속 · 역재생 · 정지 프레임</h3><h3 data-en>Speed, reverse, freeze</h3>
+        <p data-ko>0.25×부터 4×까지, 구간마다 다른 속도와 거꾸로 재생.</p>
+        <p data-en>0.25× to 4×, different speeds per section, and reverse playback.</p></div>
+      <div class="card"><div class="ico">💬</div>
+        <h3 data-ko>자막 · 스티커 · 그리기</h3><h3 data-en>Captions, stickers, drawing</h3>
+        <p data-ko>밈 글꼴, 외곽선, 이모지와 움직이는 GIF 스티커.</p>
+        <p data-en>Meme fonts, outlines, emoji and animated GIF stickers.</p></div>
+      <div class="card"><div class="ico">🌗</div>
+        <h3 data-ko>페이드 · 필터 · 보정</h3><h3 data-en>Fades, filters, adjust</h3>
+        <p data-ko>화면과 소리 페이드, 필터 7종, 밝기·대비·채도.</p>
+        <p data-en>Picture and sound fades, 7 filters, brightness, contrast, saturation.</p></div>
+      <div class="card"><div class="ico">📦</div>
+        <h3 data-ko>GIF · MP4 내보내기</h3><h3 data-en>GIF and MP4 export</h3>
+        <p data-ko>목표 용량에 맞춘 자동 축소, 투명 배경, 소리 포함 MP4.</p>
+        <p data-en>Auto-fit to a target size, transparent backgrounds, MP4 with sound.</p></div>
+      <div class="card"><div class="ico">🌏</div>
+        <h3 data-ko>12개 언어</h3><h3 data-en>12 languages</h3>
+        <p data-ko>한국어·영어·일본어·중국어·스페인어 등 앱 안에서 바로 전환.</p>
+        <p data-en>Korean, English, Japanese, Chinese, Spanish and more, switchable in-app.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow" data-ko>타임라인 편집</div><div class="eyebrow" data-en>TIMELINE EDITOR</div>
+      <h2 data-ko>영상 편집기처럼,<br>하지만 훨씬 가볍게</h2>
+      <h2 data-en>Like a video editor,<br>only much lighter</h2>
+      <ul class="check" data-ko>
+        <li>클립을 길게 눌러 끌고, 재생 위치에서 바로 분할</li>
+        <li>뒤 클립이 함께 밀리는 리플 편집과 실행 취소</li>
+        <li>자막 트랙: 위치·크기·색·모양을 클립마다</li>
+        <li>프로젝트 자동 저장, 언제든 이어서 편집</li>
+      </ul>
+      <ul class="check" data-en>
+        <li>Hold and drag clips, split right at the playhead</li>
+        <li>Ripple editing and full undo</li>
+        <li>Caption track with position, size, color and style</li>
+        <li>Projects save automatically so you can pick up anytime</li>
+      </ul>
+    </div>
+    <div class="shot"><div class="phone"><img src="img/tracks.webp" alt="" loading="lazy"></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow" data-ko>요금</div><div class="eyebrow" data-en>PRICING</div>
+    <h2 data-ko>모든 기능은 무료로</h2>
+    <h2 data-en>Every feature is free</h2>
+    <p class="lead" data-ko>무료 결과물에는 오른쪽 아래에 작은 표시가 붙습니다. 원할 때만 없앨 수 있어요.</p>
+    <p class="lead" data-en>Free exports carry a small mark in the corner. Remove it only when you want to.</p>
+    <div class="plans">
+      <div class="plan"><h3 data-ko>무료</h3><h3 data-en>Free</h3>
+        <p data-ko>모든 편집 기능, 작은 워터마크.</p><p data-en>All editing features, small watermark.</p></div>
+      <div class="plan"><h3 data-ko>광고 1회</h3><h3 data-en>Watch one ad</h3>
+        <p data-ko>원할 때 광고를 끝까지 보면 다음 내보내기 1회는 워터마크 없이.</p><p data-en>Watch an ad when you choose and your next export has no watermark.</p></div>
+      <div class="plan pro"><h3>Pro</h3>
+        <p data-ko>한 번 구매로 워터마크 영구 제거. 구독 아님.</p><p data-en>One purchase removes the watermark for good. Not a subscription.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="privacy">
+      <div class="big">🔒</div>
+      <div>
+        <h2 style="margin-top:0" data-ko>내 영상은 내 휴대폰에만</h2>
+        <h2 style="margin-top:0" data-en>Your videos stay on your phone</h2>
+        <p style="margin:0;color:var(--muted)" data-ko>편집하는 사진·영상은 서버로 올리지 않습니다. 계정도, 분석 도구도 없습니다. 자세한 내용은 <a href="privacy.html">개인정보처리방침</a>에서 확인하세요.</p>
+        <p style="margin:0;color:var(--muted)" data-en>Your photos and videos are never uploaded. No accounts, no analytics. Read the <a href="privacy.html#en">privacy policy</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 hoftlab</span>
+    <a href="privacy.html"><span data-ko>개인정보처리방침</span><span data-en>Privacy Policy</span></a>
+    <a href="mailto:hoftlab@gmail.com">hoftlab@gmail.com</a>
+    <span class="sp" data-ko>Android 출시 준비 중</span><span class="sp" data-en>Coming soon to Android</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement, btn = document.getElementById('lang');
+    function set(lang) {
+      root.lang = lang;
+      btn.textContent = lang === 'ko' ? 'EN' : '한국어';
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+    }
+    var saved = null;
+    try { saved = localStorage.getItem('lang'); } catch (e) {}
+    set(saved || ((navigator.language || 'ko').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en'));
+    btn.addEventListener('click', function () { set(root.lang === 'ko' ? 'en' : 'ko'); });
+  })();
+</script>
 </body>
 </html>
