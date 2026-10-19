@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>선쇼어 리조트 · Sunshore Resort — hoftlab</title>
+<meta name="description" content="손끝으로 가꾸는 작은 해변 리조트. 손님의 기대를 읽고 섬을 키워 가는 Android 타이쿤 게임.">
+<link rel="canonical" href="https://hoftlab.github.io/sunshore/">
+<link rel="icon" href="img/icon.png" type="image/png">
+<meta property="og:title" content="선쇼어 리조트 · Sunshore Resort">
+<meta property="og:description" content="손끝으로 가꾸는 작은 해변 리조트 타이쿤">
+<meta property="og:image" content="https://hoftlab.github.io/sunshore/img/feature.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#f4fbfa; --surface:#fff; --fg:#10302f; --muted:#506b6a; --line:#d8ecea; --teal:#1f9d98; --coral:#ee7358; --gold:#f0b43b; --chip:#e3f5f3; --shadow:0 24px 60px -28px rgba(20,90,90,.4); }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0a1a1b; --surface:#122728; --fg:#e8f7f5; --muted:#9bbab8; --line:#1d3b3c; --teal:#52d1cb; --coral:#ff8f75; --chip:#173536; --shadow:0 24px 60px -28px rgba(0,0,0,.7); } }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.65 "Noto Sans KR", system-ui, sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:var(--teal); text-decoration:none; } a:hover { text-decoration:underline; }
+  .wrap { max-width:1040px; margin:0 auto; padding:0 20px; }
+  header.top { position:sticky; top:0; z-index:10; backdrop-filter:saturate(1.4) blur(14px); background:color-mix(in srgb, var(--bg) 80%, transparent); border-bottom:1px solid var(--line); }
+  header.top .wrap { display:flex; align-items:center; gap:12px; height:58px; }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:900; color:var(--fg); }
+  .brand img { width:32px; height:32px; border-radius:9px; }
+  .brand:hover { text-decoration:none; }
+  nav { margin-left:auto; display:flex; gap:16px; align-items:center; font-size:.95rem; }
+  nav a { color:var(--muted); }
+  .lang { border:1px solid var(--line); background:var(--surface); color:var(--fg); border-radius:999px; padding:5px 12px; font:inherit; font-size:.85rem; cursor:pointer; }
+  .hero .wrap { display:grid; grid-template-columns:1fr 1.15fr; gap:36px; align-items:center; padding-top:56px; padding-bottom:56px; }
+  .badge { display:inline-block; background:var(--chip); color:var(--teal); font-weight:700; font-size:.85rem; padding:5px 12px; border-radius:999px; }
+  h1 { font-size:clamp(2.3rem,5.6vw,3.6rem); line-height:1.08; letter-spacing:-.035em; margin:16px 0 8px; font-weight:900; }
+  h1 .grad { background:linear-gradient(120deg,var(--teal),var(--coral)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .sub { color:var(--muted); font-size:1.12rem; margin:0 0 24px; max-width:30em; }
+  .btn { display:inline-block; padding:13px 20px; border-radius:14px; font-weight:700; background:linear-gradient(120deg,var(--teal),var(--coral)); color:#fff; box-shadow:var(--shadow); }
+  .note { font-size:.85rem; color:var(--muted); margin-top:12px; }
+  .shot { border-radius:20px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line); background:#000; }
+  .shot img { display:block; width:100%; height:auto; }
+  section { padding:60px 0; }
+  .eyebrow { color:var(--teal); font-weight:700; font-size:.9rem; letter-spacing:.04em; }
+  h2 { font-size:clamp(1.6rem,3.4vw,2.2rem); letter-spacing:-.025em; line-height:1.2; margin:6px 0 12px; }
+  .lead { color:var(--muted); max-width:36em; margin:0 0 30px; }
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:22px; }
+  .card .ico { width:44px; height:44px; display:grid; place-items:center; border-radius:12px; background:var(--chip); font-size:1.35rem; margin-bottom:10px; }
+  .card h3 { margin:0 0 4px; font-size:1.05rem; } .card p { margin:0; color:var(--muted); font-size:.95rem; }
+  .shots { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .shots figure { margin:0; } .shots figcaption { color:var(--muted); font-size:.9rem; margin-top:8px; }
+  .facts { background:var(--surface); border:1px solid var(--line); border-radius:24px; padding:28px; display:grid; grid-template-columns:repeat(2,1fr); gap:10px 28px; }
+  .facts div { display:flex; gap:10px; } .facts b { color:var(--teal); }
+  footer { border-top:1px solid var(--line); padding:30px 0 46px; color:var(--muted); font-size:.9rem; }
+  footer .wrap { display:flex; flex-wrap:wrap; gap:10px 24px; }
+  html:not([lang="en"]) [data-en], html[lang="en"] [data-ko] { display:none !important; }
+  @media (max-width:860px) { .hero .wrap { grid-template-columns:1fr; padding-top:32px; gap:20px; } .grid { grid-template-columns:1fr; } .shots,.facts { grid-template-columns:1fr; } nav a.hide-sm { display:none; } section { padding:44px 0; } }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../"><img src="img/icon.png" alt=""><span data-ko>선쇼어 리조트</span><span data-en>Sunshore Resort</span></a>
+  <nav>
+    <a class="hide-sm" href="#features"><span data-ko>특징</span><span data-en>Features</span></a>
+    <a class="hide-sm" href="#screens"><span data-ko>화면</span><span data-en>Screens</span></a>
+    <a class="hide-sm" href="https://sites.google.com/view/sunshore-resort-privacy"><span data-ko>개인정보</span><span data-en>Privacy</span></a>
+    <button class="lang" id="lang" type="button" aria-label="Language">EN</button>
+  </nav>
+</div></header>
+<main>
+<section class="hero" style="padding:0"><div class="wrap">
+  <div>
+    <span class="badge"><span data-ko>Android · 비공개 테스트 중</span><span data-en>Android · Closed testing</span></span>
+    <h1 data-ko>작은 섬 하나,<br><span class="grad">나만의 리조트.</span></h1>
+    <h1 data-en>One small island,<br><span class="grad">your own resort.</span></h1>
+    <p class="sub" data-ko>손님의 기대를 읽고, 길을 놓고, 시설을 짓고, 섬을 넓혀 가세요. 오프라인에서 혼자 오래 가꾸는 해변 리조트 타이쿤.</p>
+    <p class="sub" data-en>Read what guests hope for, lay paths, build and grow your island. A beach resort tycoon to tend for a long time, offline.</p>
+    <span class="btn"><span data-ko>Google Play 출시 준비 중</span><span data-en>Coming to Google Play</span></span>
+    <p class="note" data-ko>무료 · 계정·광고·결제 없음 · 한국어 / English</p>
+    <p class="note" data-en>Free · no account, ads or purchases · 한국어 / English</p>
+  </div>
+  <div class="shot"><img src="img/hero.jpg" alt=""></div>
+</div></section>
+
+<section id="features"><div class="wrap">
+  <div class="eyebrow" data-ko>특징</div><div class="eyebrow" data-en>FEATURES</div>
+  <h2 data-ko>보고, 누르고, 가꾸는 즐거움</h2><h2 data-en>Look, tap, tend</h2>
+  <p class="lead" data-ko>한 손가락으로 하는 조작과 그림으로 보여 주는 카드. 처음엔 손가락이 알려 주고, 익숙해지면 마음대로 설계해요.</p>
+  <p class="lead" data-en>One-finger controls and picture cards. A pointing finger teaches the first steps, then you design freely.</p>
+  <div class="grid">
+    <div class="card"><div class="ico">🏖️</div><h3 data-ko>공간 설계</h3><h3 data-en>Design the space</h3><p data-ko>산책로를 끌어 그리고 40종 가까운 시설과 장식을 배치해요.</p><p data-en>Drag paths and place close to 40 buildings and decorations.</p></div>
+    <div class="card"><div class="ico">🙂</div><h3 data-ko>손님의 하루</h3><h3 data-en>Guests with lives</h3><p data-ko>손님은 이름과 기대를 갖고 걷고, 줄 서고, 후기를 남겨요. 단골도 생겨요.</p><p data-en>Guests have names and hopes; they walk, queue and leave reviews. Regulars return.</p></div>
+    <div class="card"><div class="ico">📈</div><h3 data-ko>끝없는 성장</h3><h3 data-en>Endless growth</h3><p data-ko>레벨, 투자, 대형 명소, 매년의 도전. 섬도 계속 넓혀 가요.</p><p data-en>Levels, investments, grand attractions and yearly challenges. Keep widening the island.</p></div>
+    <div class="card"><div class="ico">🎵</div><h3 data-ko>느긋한 섬의 하루</h3><h3 data-en>A slow island day</h3><p data-ko>우쿨렐레 음악과 파도 소리, 노을. 자리를 비우면 시간이 멈춰요.</p><p data-en>Ukulele music, waves and sunsets. Time pauses when you step away.</p></div>
+    <div class="card"><div class="ico">🧭</div><h3 data-ko>운영의 깊이</h3><h3 data-en>Depth in running it</h3><p data-ko>가격, 직원, 관광 계약, 행사, 계절과 축제.</p><p data-en>Prices, staff, tour contracts, events, seasons and festivals.</p></div>
+    <div class="card"><div class="ico">📴</div><h3 data-ko>오프라인</h3><h3 data-en>Offline</h3><p data-ko>인터넷이 없어도 그대로 즐겨요.</p><p data-en>Plays exactly the same without internet.</p></div>
+  </div>
+</div></section>
+
+<section id="screens"><div class="wrap">
+  <div class="eyebrow" data-ko>화면</div><div class="eyebrow" data-en>SCREENS</div>
+  <h2 data-ko>플레이 화면</h2><h2 data-en>In the game</h2>
+  <div class="shots">
+    <figure class="shot"><img src="img/guest.jpg" alt=""></figure>
+    <figure class="shot"><img src="img/menu.jpg" alt=""></figure>
+    <figure class="shot" style="grid-column:1/-1"><img src="img/pool.jpg" alt=""></figure>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="facts">
+    <div><b>✓</b><span data-ko>무료 · 광고 없음 · 결제 없음</span><span data-en>Free · no ads · no purchases</span></div>
+    <div><b>✓</b><span data-ko>회원 가입 없음, 저장은 내 휴대폰에만</span><span data-en>No sign-up; saves stay on your phone</span></div>
+    <div><b>✓</b><span data-ko>한국어 · English</span><span data-en>한국어 · English</span></div>
+    <div><b>✓</b><span data-ko>새 버전 확인에만 인터넷을 짧게 사용</span><span data-en>Internet only for a quick update check</span></div>
+  </div>
+</div></section>
+</main>
+<footer><div class="wrap">
+  <span>© 2026 hoftlab</span>
+  <a href="https://sites.google.com/view/sunshore-resort-privacy"><span data-ko>개인정보처리방침</span><span data-en>Privacy Policy</span></a>
+  <a href="mailto:hoftlab@gmail.com">hoftlab@gmail.com</a>
+  <a href="../">hoftlab</a>
+</div></footer>
+<script>
+  (function () {
+    var root = document.documentElement, btn = document.getElementById('lang');
+    function set(l) { root.lang = l; btn.textContent = l === 'ko' ? 'EN' : '한국어'; try { localStorage.setItem('lang', l); } catch (e) {} }
+    var saved = null; try { saved = localStorage.getItem('lang'); } catch (e) {}
+    set(saved || ((navigator.language || 'ko').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en'));
+    btn.addEventListener('click', function () { set(root.lang === 'ko' ? 'en' : 'ko'); });
+  })();
+</script>
+</body>
+</html>
