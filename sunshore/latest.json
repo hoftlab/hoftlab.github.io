@@ -1,7 +1,7 @@
 {
-  "version": "0.9.6",
-  "code": 13,
-  "notes": "테스터 의견 반영: 입장 정원·손님 지갑이 리조트와 함께 커지고, 대형 명소를 손님이 찾아가요",
+  "version": "0.9.7",
+  "code": 14,
+  "notes": "가을 앱 아이콘, 화면 돌릴 때 버벅임 줄임, 시설 카드에 단계·고급화 현황",
   "url": "https://play.google.com/store/apps/details?id=com.hoftlab.sunshore",
   "min_version": "0.9.0"
 }
