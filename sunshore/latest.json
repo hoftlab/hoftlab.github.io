@@ -1,7 +1,7 @@
 {
-  "version": "0.9.11",
-  "code": 18,
-  "notes": "버기는 대여소에서 타고 출발, 정비가 필요한 건물에 렌치 표시, 쉼터는 직원 없이, 앱을 켤 때마다 새 버전 확인",
+  "version": "0.9.12",
+  "code": 19,
+  "notes": "건물마다 필요한 레벨, 뒤로 가기 ‘벌써 가요?’ 카드, 소식 알림·머리 위 표시 끄기, 연수 뒤 직원 자리 지키기, 정비 % 막대",
   "url": "https://play.google.com/store/apps/details?id=com.hoftlab.sunshore",
   "min_version": "0.9.0"
 }
