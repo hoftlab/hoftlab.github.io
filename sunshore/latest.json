@@ -1,7 +1,7 @@
 {
-  "version": "0.9.12",
-  "code": 19,
-  "notes": "건물마다 필요한 레벨, 뒤로 가기 ‘벌써 가요?’ 카드, 소식 알림·머리 위 표시 끄기, 연수 뒤 직원 자리 지키기, 정비 % 막대",
+  "version": "0.9.13",
+  "code": 20,
+  "notes": "하루 마감 뒤 저장 실패 고침, 길 수정(골라서 한 번에 지우기), 전국 리조트 랭킹, 새 목표·행사",
   "url": "https://play.google.com/store/apps/details?id=com.hoftlab.sunshore",
   "min_version": "0.9.0"
 }
