@@ -1,7 +1,7 @@
 {
-  "version": "0.9.13",
-  "code": 20,
-  "notes": "하루 마감 뒤 저장 실패 고침, 길 수정(골라서 한 번에 지우기), 전국 리조트 랭킹, 새 목표·행사",
+  "version": "0.9.14",
+  "code": 21,
+  "notes": "보상 광고(선택), 리조트 ‘경영’ 탭, 연구 트리 화면, 새 손님·명소·땅, 건설 카메라 개선",
   "url": "https://play.google.com/store/apps/details?id=com.hoftlab.sunshore",
   "min_version": "0.9.0"
 }
