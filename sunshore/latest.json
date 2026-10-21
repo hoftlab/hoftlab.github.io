@@ -1,7 +1,7 @@
 {
-  "version": "0.9.15",
-  "code": 22,
-  "notes": "앱이 꺼지던 문제 고침(경영 탭 뒤), 투자 버튼·광고 보상·휴대폰 알림 고침",
+  "version": "0.9.17",
+  "code": 24,
+  "notes": "로딩이 빨라졌어요 · 바다에 돛단배와 제트스키 · ‘객실’ 표기 · 새 건설·리조트 버튼 · 급여보다 적게 버는 직원 안내",
   "url": "https://play.google.com/store/apps/details?id=com.hoftlab.sunshore",
   "min_version": "0.9.0"
 }
