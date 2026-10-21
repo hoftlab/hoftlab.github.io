@@ -1,7 +1,7 @@
 {
-  "version": "0.9.14",
-  "code": 21,
-  "notes": "보상 광고(선택), 리조트 ‘경영’ 탭, 연구 트리 화면, 새 손님·명소·땅, 건설 카메라 개선",
+  "version": "0.9.15",
+  "code": 22,
+  "notes": "앱이 꺼지던 문제 고침(경영 탭 뒤), 투자 버튼·광고 보상·휴대폰 알림 고침",
   "url": "https://play.google.com/store/apps/details?id=com.hoftlab.sunshore",
   "min_version": "0.9.0"
 }
