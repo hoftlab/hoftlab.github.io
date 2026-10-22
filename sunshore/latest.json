@@ -1,7 +1,7 @@
 {
-  "version": "0.9.17",
-  "code": 24,
-  "notes": "로딩이 빨라졌어요 · 바다에 돛단배와 제트스키 · ‘객실’ 표기 · 새 건설·리조트 버튼 · 급여보다 적게 버는 직원 안내",
+  "version": "0.9.18",
+  "code": 25,
+  "notes": "리조트 창 뒤 건설 메뉴에서 앱이 꺼지던 문제 고침 · 리조트를 파일로 내보내고 가져오기 · ‘건물 숨김’이 코티지 2층도 숨김",
   "url": "https://play.google.com/store/apps/details?id=com.hoftlab.sunshore",
   "min_version": "0.9.0"
 }
