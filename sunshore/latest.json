@@ -1,7 +1,7 @@
 {
-  "version": "0.9.18",
-  "code": 25,
-  "notes": "리조트 창 뒤 건설 메뉴에서 앱이 꺼지던 문제 고침 · 리조트를 파일로 내보내고 가져오기 · ‘건물 숨김’이 코티지 2층도 숨김",
+  "version": "0.9.19",
+  "code": 26,
+  "notes": "평판이 높으면 객실이 꽉 찰 만큼 손님이 와요 · 홍보 캠페인(손님 홍보·명소 투어) · 상어·강풍 돌발 사건 · 직원 탭 정리",
   "url": "https://play.google.com/store/apps/details?id=com.hoftlab.sunshore",
   "min_version": "0.9.0"
 }
