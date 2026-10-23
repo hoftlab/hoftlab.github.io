@@ -1,7 +1,7 @@
 {
-  "version": "0.9.21",
-  "code": 28,
-  "notes": "이름 카드가 키보드 위로 · 고른 건물에 노란 테두리 · 연구 카드 글씨 키움 · 손님 카드 떨림 고침 · 장부에서 영업 밖 돈 따로",
+  "version": "0.9.22",
+  "code": 29,
+  "notes": "친구 리조트 구경 중 장부가 떠서 못 나가던 것 고침 · 구경 중엔 ‘내 리조트로’가 늘 눌려요",
   "url": "https://play.google.com/store/apps/details?id=com.hoftlab.sunshore",
   "min_version": "0.9.0"
 }
