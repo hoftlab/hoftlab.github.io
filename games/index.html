@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>hoftlab 게임 — 브라우저에서 바로</title>
+<meta name="description" content="hoftlab이 만드는 게임: 링크 하나로 같이 하는 추리 게임 '범인은 접속 중', 섬 리조트 타이쿤 '선쇼어 리조트', 실시간 전략 대전 'LAST CORE'.">
+<link rel="canonical" href="https://hoftlab.github.io/games/">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<meta property="og:title" content="hoftlab 게임">
+<meta property="og:description" content="범인은 접속 중 · 선쇼어 리조트 · LAST CORE">
+<meta property="og:image" content="https://hoftlab.github.io/games/img/tkio.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#faf8ff; --surface:#fff; --fg:#1b1530; --muted:#5d5872; --line:#ebe6f7; --accent:#5b3df5; --chip:#f1ecff; --play:#5b3df5; --play-fg:#fff; --shadow:0 24px 60px -28px rgba(40,30,90,.35); }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0f0c1a; --surface:#191428; --fg:#f1edff; --muted:#a9a2c0; --line:#2a2340; --accent:#b6a3ff; --chip:#241d3a; --play:#b6a3ff; --play-fg:#160f2e; --shadow:0 24px 60px -28px rgba(0,0,0,.7); } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.65 "Noto Sans KR", system-ui, sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { max-width:1000px; margin:0 auto; padding:0 20px; }
+  header { padding:28px 0 8px; display:flex; align-items:center; gap:18px; }
+  header .logo { font-weight:900; font-size:1.25rem; letter-spacing:-.02em; }
+  nav { display:flex; gap:14px; font-size:.95rem; color:var(--muted); }
+  nav a:hover, nav [aria-current] { color:var(--fg); }
+  nav [aria-current] { font-weight:700; }
+  .lang { margin-left:auto; border:1px solid var(--line); background:var(--surface); color:var(--fg); border-radius:999px; padding:5px 12px; font:inherit; font-size:.85rem; cursor:pointer; }
+  h1 { font-size:clamp(2rem,5.5vw,3.2rem); letter-spacing:-.03em; line-height:1.12; margin:36px 0 8px; font-weight:900; }
+  .lead { color:var(--muted); max-width:36em; margin:0 0 36px; }
+  .section-title { font-size:1rem; font-weight:700; color:var(--muted); margin:0 0 14px; }
+  .games { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:40px; }
+  .game { display:flex; flex-direction:column; background:var(--surface); border:1px solid var(--line); border-radius:24px; padding:22px; box-shadow:var(--shadow); }
+  .game.featured { grid-column:1 / -1; display:grid; grid-template-columns:1.15fr 1fr; gap:24px; align-items:center; }
+  .cover { width:100%; border-radius:16px; display:block; aspect-ratio:16/8; object-fit:cover; background:var(--chip); }
+  .row { display:flex; align-items:center; gap:12px; margin-top:16px; }
+  .featured .row { margin-top:0; }
+  .ico { width:48px; height:48px; border-radius:13px; flex:none; }
+  .game h2 { margin:0; font-size:1.25rem; }
+  .game .sub { margin:2px 0 0; color:var(--muted); font-size:.92rem; }
+  .game .desc { margin:12px 0 0; font-size:.95rem; }
+  .tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; }
+  .tag { display:inline-block; font-size:.8rem; font-weight:700; color:var(--accent); background:var(--chip); border-radius:999px; padding:3px 10px; }
+  .tag.soon { color:var(--muted); }
+  .actions { display:flex; flex-wrap:wrap; align-items:center; gap:10px 16px; margin-top:auto; padding-top:18px; }
+  .featured .actions { margin-top:0; }
+  .play { display:inline-flex; align-items:center; gap:6px; min-height:48px; padding:0 22px; border-radius:999px; background:var(--play); color:var(--play-fg); font-weight:900; font-size:1rem; }
+  .play:hover { filter:brightness(1.08); }
+  .link { font-weight:700; color:var(--accent); font-size:.95rem; }
+  .note { margin:10px 0 0; color:var(--muted); font-size:.85rem; }
+  .status { margin-top:auto; padding-top:18px; color:var(--muted); font-size:.9rem; }
+  footer { border-top:1px solid var(--line); padding:28px 0 44px; color:var(--muted); font-size:.9rem; }
+  footer .wrap { display:flex; flex-wrap:wrap; gap:10px 24px; }
+  footer a:hover { color:var(--fg); }
+  html:not([lang="en"]) [data-en], html[lang="en"] [data-ko] { display:none !important; }
+  @media (max-width:760px) { .games, .game.featured { grid-template-columns:1fr; } .game.featured { gap:0; } .featured .row { margin-top:16px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="../">hoftlab</a>
+    <nav><a href="../"><span data-ko>앱</span><span data-en>Apps</span></a><a href="./" aria-current="page"><span data-ko>게임</span><span data-en>Games</span></a></nav>
+    <button class="lang" id="lang" type="button" aria-label="Language">EN</button>
+  </header>
+  <h1 data-ko>링크 하나로 같이 하는<br>작은 게임들</h1>
+  <h1 data-en>Small games you can share<br>with a single link</h1>
+  <p class="lead" data-ko>설치 없이 브라우저에서 바로 하는 게임부터, 휴대폰에서 오래 가꾸는 게임까지. 아직 만들고 있는 게임도 함께 보여 드려요.</p>
+  <p class="lead" data-en>From games you play right in the browser to ones you tend on your phone for a long time — including the ones still in the making.</p>
+
+  <h2 class="section-title" data-ko>지금 바로 플레이</h2>
+  <h2 class="section-title" data-en>Play now</h2>
+  <div class="games">
+    <article class="game featured">
+      <img class="cover" src="img/tkio.jpg" alt="" style="object-position:top">
+      <div>
+        <div class="row">
+          <div><h2 data-ko>범인은 접속 중</h2><h2 data-en>The Culprit Is Online</h2>
+          <p class="sub" data-ko>거짓말하는 범인 한 명을 찾는 추리 파티 게임</p><p class="sub" data-en>A party deduction game: find the one who's lying</p></div>
+        </div>
+        <p class="desc" data-ko>새벽 2시, 사무실 금고가 털렸어요. 각자 어디 있었는지, 거기서 무엇을 봤는지 차례로 말하고 투표로 범인을 찾아요. 범인은 본 게 없어서 남의 대답을 따라 하거나, CCTV 기록 하나를 몰래 바꿔요.</p>
+        <p class="desc" data-en>2 a.m., the office safe was cracked. Take turns saying where you were and what you saw there, then vote for the culprit — who saw nothing, so they copy others' answers or quietly tamper with one CCTV record.</p>
+        <div class="tags">
+          <span class="tag" data-ko>3~6명</span><span class="tag" data-en>3–6 players</span>
+          <span class="tag" data-ko>한 판 약 6분</span><span class="tag" data-en>About 6 min a round</span>
+          <span class="tag" data-ko>모자란 자리는 봇이</span><span class="tag" data-en>Bots fill empty seats</span>
+          <span class="tag" data-ko>설치·가입 없음</span><span class="tag" data-en>No install, no sign-up</span>
+        </div>
+        <div class="actions">
+          <a class="play" href="https://tkio-party.gamto.workers.dev/" target="_blank" rel="noopener"><span data-ko>지금 플레이 →</span><span data-en>Play now →</span></a>
+        </div>
+        <p class="note" data-ko>방을 만들고 4자리 코드를 친구에게 보내면 같이 할 수 있어요. 혼자 봇과 해 볼 수도 있어요. 시제품이라 방장이 창을 닫으면 그 판은 끝나요.</p>
+        <p class="note" data-en>Create a room and send the 4-digit code to friends, or try it alone with bots. It's a prototype, so the round ends if the host closes the tab.</p>
+      </div>
+    </article>
+  </div>
+
+  <h2 class="section-title" data-ko>휴대폰 게임 · 만들고 있는 게임</h2>
+  <h2 class="section-title" data-en>Mobile and in development</h2>
+  <div class="games">
+    <article class="game">
+      <img class="cover" src="../sunshore/img/panorama.webp" alt="">
+      <div class="row"><img class="ico" src="../sunshore/img/icon.png" alt="">
+        <div><h2 data-ko>선쇼어 리조트</h2><h2 data-en>Sunshore Resort</h2>
+        <p class="sub" data-ko>작은 섬 해변 리조트 타이쿤</p><p class="sub" data-en>A small-island beach resort tycoon</p></div></div>
+      <p class="desc" data-ko>손님의 바람을 읽고 길을 그리고 시설을 지어, 끝없이 섬을 넓혀 가는 게임.</p>
+      <p class="desc" data-en>Read guests' wishes, draw paths and build, and keep widening your island.</p>
+      <div class="tags"><span class="tag" data-ko>Android · 비공개 테스트 중</span><span class="tag" data-en>Android · Closed testing</span><span class="tag" data-ko>테스터 모집</span><span class="tag" data-en>Testers wanted</span></div>
+      <div class="actions">
+        <a class="link" href="../sunshore/"><span data-ko>자세히 보기 →</span><span data-en>Learn more →</span></a>
+        <a class="link" href="../sunshore/#join"><span data-ko>테스트 참여 →</span><span data-en>Join the test →</span></a>
+      </div>
+    </article>
+    <article class="game">
+      <img class="cover" src="img/last-core.jpg" alt="">
+      <div class="row">
+        <div><h2>LAST CORE</h2>
+        <p class="sub" data-ko>최대 6명이 한 아레나에서 겨루는 실시간 전략 대전</p><p class="sub" data-en>Real-time strategy battles, up to six in one arena</p></div></div>
+      <p class="desc" data-ko>팀 없이 모두가 적. 마나를 모아 부대를 소환하고 상대 코어를 부수며, 마지막까지 내 코어를 지키면 이겨요. 떼·탱커·원거리·치유·범위 포격·거신, 부대 여섯 종을 조합해요.</p>
+      <p class="desc" data-en>No teams — everyone is an enemy. Gather mana, summon units, break the other cores, and win by keeping yours alive to the end. Mix six unit types: swarm, tank, ranged, healer, artillery and titan.</p>
+      <div class="tags"><span class="tag soon" data-ko>개발 중 · 비공개 테스트</span><span class="tag soon" data-en>In development · Private testing</span><span class="tag" data-ko>1~6명</span><span class="tag" data-en>1–6 players</span></div>
+      <p class="status" data-ko>공개 플레이는 준비 중이에요. 열리면 이 페이지에서 알려 드릴게요.</p>
+      <p class="status" data-en>Public play is on the way. We'll announce it here when it opens.</p>
+    </article>
+  </div>
+</div>
+<footer><div class="wrap">
+  <span>© 2026 hoftlab</span>
+  <a href="mailto:hoftlab@gmail.com">hoftlab@gmail.com</a>
+  <a href="../"><span data-ko>앱 보기</span><span data-en>See the apps</span></a>
+</div></footer>
+<script>
+  (function () {
+    var root = document.documentElement, btn = document.getElementById('lang');
+    function set(l) { root.lang = l; btn.textContent = l === 'ko' ? 'EN' : '한국어'; try { localStorage.setItem('lang', l); } catch (e) {} }
+    var saved = null; try { saved = localStorage.getItem('lang'); } catch (e) {}
+    set(saved || ((navigator.language || 'ko').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en'));
+    btn.addEventListener('click', function () { set(root.lang === 'ko' ? 'en' : 'ko'); });
+  })();
+</script>
+</body>
+</html>
