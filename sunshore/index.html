@@ -35,6 +35,7 @@
   h1 .grad { background:linear-gradient(120deg,var(--teal),var(--coral)); -webkit-background-clip:text; background-clip:text; color:transparent; }
   .sub { color:var(--muted); font-size:1.12rem; margin:0 0 24px; max-width:30em; }
   .btn { display:inline-block; padding:13px 20px; border-radius:14px; font-weight:700; background:linear-gradient(120deg,var(--teal),var(--coral)); color:#fff; box-shadow:var(--shadow); }
+  .btn:hover { text-decoration:none; }
   .note { font-size:.85rem; color:var(--muted); margin-top:12px; }
   .shot { border-radius:20px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line); background:#000; }
   .shot img { display:block; width:100%; height:auto; }
@@ -47,22 +48,29 @@
   .card .ico { width:44px; height:44px; display:grid; place-items:center; border-radius:12px; background:var(--chip); font-size:1.35rem; margin-bottom:10px; }
   .card h3 { margin:0 0 4px; font-size:1.05rem; } .card p { margin:0; color:var(--muted); font-size:.95rem; }
   .shots { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-  .shots figure { margin:0; } .shots figcaption { color:var(--muted); font-size:.9rem; margin-top:8px; }
+  .shots figure { margin:0; } .shots figcaption { color:var(--muted); font-size:.9rem; margin:8px 2px 0; }
+  .shots .wide { grid-column:1/-1; }
   .facts { background:var(--surface); border:1px solid var(--line); border-radius:24px; padding:28px; display:grid; grid-template-columns:repeat(2,1fr); gap:10px 28px; }
   .facts div { display:flex; gap:10px; } .facts b { color:var(--teal); }
+  .join { background:var(--surface); border:1px solid var(--line); border-radius:24px; padding:30px; }
+  .steps { list-style:none; padding:0; margin:0 0 18px; display:grid; gap:14px; counter-reset:s; }
+  .steps li { counter-increment:s; display:grid; grid-template-columns:36px 1fr; gap:12px; align-items:start; }
+  .steps li::before { content:counter(s); width:32px; height:32px; border-radius:50%; display:grid; place-items:center; font-weight:900; color:#fff; background:linear-gradient(135deg,var(--teal),var(--coral)); }
+  .steps b { display:block; } .steps a { word-break:break-all; }
+  .ask { color:var(--muted); margin:0; font-size:.95rem; }
   footer { border-top:1px solid var(--line); padding:30px 0 46px; color:var(--muted); font-size:.9rem; }
   footer .wrap { display:flex; flex-wrap:wrap; gap:10px 24px; }
   html:not([lang="en"]) [data-en], html[lang="en"] [data-ko] { display:none !important; }
-  @media (max-width:860px) { .hero .wrap { grid-template-columns:1fr; padding-top:32px; gap:20px; } .grid { grid-template-columns:1fr; } .shots,.facts { grid-template-columns:1fr; } nav a.hide-sm { display:none; } section { padding:44px 0; } }
+  @media (max-width:860px) { .hero .wrap { grid-template-columns:1fr; padding-top:32px; gap:20px; } .grid { grid-template-columns:1fr; } .shots,.facts { grid-template-columns:1fr; } nav a.hide-sm { display:none; } section { padding:44px 0; } .join { padding:22px; } }
 </style>
 </head>
 <body>
 <header class="top"><div class="wrap">
-  <a class="brand" href="../"><img src="img/icon.png" alt=""><span data-ko>선쇼어 리조트</span><span data-en>Sunshore Resort</span></a>
+  <a class="brand" href="./"><img src="img/icon.png" alt=""><span data-ko>선쇼어 리조트</span><span data-en>Sunshore Resort</span></a>
   <nav>
     <a class="hide-sm" href="#features"><span data-ko>특징</span><span data-en>Features</span></a>
     <a class="hide-sm" href="#screens"><span data-ko>화면</span><span data-en>Screens</span></a>
-    <a class="hide-sm" href="https://sites.google.com/view/sunshore-resort-privacy"><span data-ko>개인정보</span><span data-en>Privacy</span></a>
+    <a class="hide-sm" href="#join"><span data-ko>테스트 참여</span><span data-en>Join the test</span></a>
     <button class="lang" id="lang" type="button" aria-label="Language">EN</button>
   </nav>
 </div></header>
@@ -72,46 +80,69 @@
     <span class="badge"><span data-ko>Android · 비공개 테스트 중</span><span data-en>Android · Closed testing</span></span>
     <h1 data-ko>작은 섬 하나,<br><span class="grad">나만의 리조트.</span></h1>
     <h1 data-en>One small island,<br><span class="grad">your own resort.</span></h1>
-    <p class="sub" data-ko>손님의 기대를 읽고, 길을 놓고, 시설을 짓고, 섬을 넓혀 가세요. 오프라인에서 혼자 오래 가꾸는 해변 리조트 타이쿤.</p>
-    <p class="sub" data-en>Read what guests hope for, lay paths, build and grow your island. A beach resort tycoon to tend for a long time, offline.</p>
-    <span class="btn"><span data-ko>Google Play 출시 준비 중</span><span data-en>Coming to Google Play</span></span>
-    <p class="note" data-ko>무료 · 계정·광고·결제 없음 · 한국어 / English</p>
-    <p class="note" data-en>Free · no account, ads or purchases · 한국어 / English</p>
+    <p class="sub" data-ko>여객선을 타고 오는 손님의 바람을 읽고, 길을 그리고, 시설을 짓고, 섬을 넓혀 가세요. 끝없이 키워 가는 해변 리조트 타이쿤.</p>
+    <p class="sub" data-en>Read what each ferry of guests hopes for, draw paths, build and widen your island. A beach resort tycoon that never stops growing.</p>
+    <a class="btn" href="#join"><span data-ko>테스터로 참여하기</span><span data-en>Join the test</span></a>
+    <p class="note" data-ko>무료 · 선택형 보상 광고 · 결제·계정 없음 · 한국어 / English</p>
+    <p class="note" data-en>Free · optional rewarded ads · no purchases or account · 한국어 / English</p>
   </div>
-  <div class="shot"><img src="img/hero.jpg" alt=""></div>
+  <div class="shot"><img src="img/panorama.webp" alt="섬 곳곳에 시설이 들어선 리조트 전경과 게임 화면" width="1600" height="656"></div>
 </div></section>
 
 <section id="features"><div class="wrap">
   <div class="eyebrow" data-ko>특징</div><div class="eyebrow" data-en>FEATURES</div>
   <h2 data-ko>보고, 누르고, 가꾸는 즐거움</h2><h2 data-en>Look, tap, tend</h2>
-  <p class="lead" data-ko>한 손가락으로 하는 조작과 그림으로 보여 주는 카드. 처음엔 손가락이 알려 주고, 익숙해지면 마음대로 설계해요.</p>
+  <p class="lead" data-ko>한 손가락으로 하는 조작과 그림으로 보여 주는 카드. 처음엔 손가락이 하나씩 알려 주고, 익숙해지면 마음대로 설계해요.</p>
   <p class="lead" data-en>One-finger controls and picture cards. A pointing finger teaches the first steps, then you design freely.</p>
   <div class="grid">
-    <div class="card"><div class="ico">🏖️</div><h3 data-ko>공간 설계</h3><h3 data-en>Design the space</h3><p data-ko>산책로를 끌어 그리고 40종 가까운 시설과 장식을 배치해요.</p><p data-en>Drag paths and place close to 40 buildings and decorations.</p></div>
-    <div class="card"><div class="ico">🙂</div><h3 data-ko>손님의 하루</h3><h3 data-en>Guests with lives</h3><p data-ko>손님은 이름과 기대를 갖고 걷고, 줄 서고, 후기를 남겨요. 단골도 생겨요.</p><p data-en>Guests have names and hopes; they walk, queue and leave reviews. Regulars return.</p></div>
-    <div class="card"><div class="ico">📈</div><h3 data-ko>끝없는 성장</h3><h3 data-en>Endless growth</h3><p data-ko>레벨, 투자, 대형 명소, 매년의 도전. 섬도 계속 넓혀 가요.</p><p data-en>Levels, investments, grand attractions and yearly challenges. Keep widening the island.</p></div>
-    <div class="card"><div class="ico">🎵</div><h3 data-ko>느긋한 섬의 하루</h3><h3 data-en>A slow island day</h3><p data-ko>우쿨렐레 음악과 파도 소리, 노을. 자리를 비우면 시간이 멈춰요.</p><p data-en>Ukulele music, waves and sunsets. Time pauses when you step away.</p></div>
-    <div class="card"><div class="ico">🧭</div><h3 data-ko>운영의 깊이</h3><h3 data-en>Depth in running it</h3><p data-ko>가격, 직원, 관광 계약, 행사, 계절과 축제.</p><p data-en>Prices, staff, tour contracts, events, seasons and festivals.</p></div>
-    <div class="card"><div class="ico">📴</div><h3 data-ko>오프라인</h3><h3 data-en>Offline</h3><p data-ko>인터넷이 없어도 그대로 즐겨요.</p><p data-en>Plays exactly the same without internet.</p></div>
+    <div class="card"><div class="ico">🏖️</div><h3 data-ko>마음대로 설계하는 섬</h3><h3 data-en>An island your way</h3><p data-ko>손가락으로 산책로를 그리고 40종 넘는 시설을 놓아요. 네 방향으로 돌리고 언제든 옮겨요.</p><p data-en>Draw paths with a finger and place over 40 kinds of buildings. Turn them four ways and move them any time.</p></div>
+    <div class="card"><div class="ico">🙂</div><h3 data-ko>손님 24종과 단골</h3><h3 data-en>24 guest types, regulars</h3><p data-ko>손님마다 바라는 것과 지갑이 달라요. 마음에 든 손님은 이름을 가진 단골이 되어 다시 와요.</p><p data-en>Every guest has their own wishes and budget. Happy guests come back as named regulars.</p></div>
+    <div class="card"><div class="ico">📈</div><h3 data-ko>끝없이 키우는 리조트</h3><h3 data-en>Growth with no end</h3><p data-ko>레벨에는 끝이 없어요. 땅을 사서 섬을 넓히고, 며칠에 걸쳐 대형 명소 12종을 지어요.</p><p data-en>Levels never end. Buy land to widen the island and build 12 grand attractions over several days.</p></div>
+    <div class="card"><div class="ico">🧭</div><h3 data-ko>운영의 재미</h3><h3 data-en>Running the place</h3><p data-ko>직원 고용과 연수, 연구, 손님 의뢰, 홍보 캠페인, 숙소 가격과 시설 정비.</p><p data-en>Hire and train staff, run research, take guest requests and campaigns, set prices and keep things repaired.</p></div>
+    <div class="card"><div class="ico">🌊</div><h3 data-ko>계절과 돌발 사건</h3><h3 data-en>Seasons and surprises</h3><p data-ko>계절과 축제, 올해의 도전. 가끔 상어가 나타나거나 강풍이 불면 손님을 대피시켜요.</p><p data-en>Seasons, festivals and yearly challenges. Now and then a shark or a gale sends guests to safety.</p></div>
+    <div class="card"><div class="ico">🎵</div><h3 data-ko>느긋한 섬의 하루</h3><h3 data-en>A slow island day</h3><p data-ko>우쿨렐레 음악과 파도 소리, 노을과 밤 불빛. 자리를 비우면 시간이 멈춰요.</p><p data-en>Ukulele music, waves, sunsets and night lights. Time pauses when you step away.</p></div>
   </div>
 </div></section>
 
 <section id="screens"><div class="wrap">
   <div class="eyebrow" data-ko>화면</div><div class="eyebrow" data-en>SCREENS</div>
-  <h2 data-ko>플레이 화면</h2><h2 data-en>In the game</h2>
+  <h2 data-ko>실제 Android 플레이 화면</h2><h2 data-en>Real Android gameplay</h2>
   <div class="shots">
-    <figure class="shot"><img src="img/guest.jpg" alt=""></figure>
-    <figure class="shot"><img src="img/menu.jpg" alt=""></figure>
-    <figure class="shot" style="grid-column:1/-1"><img src="img/pool.jpg" alt=""></figure>
+    <figure><div class="shot"><img src="img/water-park.webp" alt="" width="1600" height="656" loading="lazy"></div><figcaption data-ko>워터파크와 호텔이 모인 구역</figcaption><figcaption data-en>A water park next to the hotels</figcaption></figure>
+    <figure><div class="shot"><img src="img/hotel-harbour.webp" alt="" width="1600" height="656" loading="lazy"></div><figcaption data-ko>호텔과 마리나가 있는 해안</figcaption><figcaption data-en>Hotels and a marina on the shore</figcaption></figure>
+    <figure><div class="shot"><img src="img/pool-life.webp" alt="" width="1600" height="656" loading="lazy"></div><figcaption data-ko>수영장과 물놀이 시설, 먹거리 거리</figcaption><figcaption data-en>Pools, water fun and food stalls</figcaption></figure>
+    <figure><div class="shot"><img src="img/boats.webp" alt="" width="1600" height="656" loading="lazy"></div><figcaption data-ko>돛단배와 제트스키가 오가는 바다</figcaption><figcaption data-en>Sailboats and jet skis out at sea</figcaption></figure>
+    <figure class="wide"><div class="shot"><img src="img/island-finale.webp" alt="" width="1600" height="656" loading="lazy"></div><figcaption data-ko>섬 가득 채워 가는 나만의 리조트</figcaption><figcaption data-en>An island filled with your own resort</figcaption></figure>
   </div>
 </div></section>
 
 <section><div class="wrap">
   <div class="facts">
-    <div><b>✓</b><span data-ko>무료 · 광고 없음 · 결제 없음</span><span data-en>Free · no ads · no purchases</span></div>
+    <div><b>✓</b><span data-ko>무료 · 결제 없음 · 광고는 보고 싶을 때만 보는 보상형</span><span data-en>Free · no purchases · ads only as opt-in rewards</span></div>
     <div><b>✓</b><span data-ko>회원 가입 없음, 저장은 내 휴대폰에만</span><span data-en>No sign-up; saves stay on your phone</span></div>
     <div><b>✓</b><span data-ko>한국어 · English</span><span data-en>한국어 · English</span></div>
-    <div><b>✓</b><span data-ko>새 버전 확인에만 인터넷을 짧게 사용</span><span data-en>Internet only for a quick update check</span></div>
+    <div><b>✓</b><span data-ko>인터넷은 새 버전 확인과 광고에만</span><span data-en>Internet only for update checks and ads</span></div>
+  </div>
+</div></section>
+
+<section id="join"><div class="wrap">
+  <div class="eyebrow" data-ko>테스트 참여</div><div class="eyebrow" data-en>JOIN THE TEST</div>
+  <h2 data-ko>함께 섬을 키워 주세요</h2><h2 data-en>Help us grow the island</h2>
+  <p class="lead" data-ko>정식 출시 전 비공개 테스트 중이에요. 안드로이드 휴대폰과 구글 계정만 있으면 돼요.</p>
+  <p class="lead" data-en>We're in closed testing before the public launch. All you need is an Android phone and a Google account.</p>
+  <div class="join">
+    <ol class="steps" data-ko>
+      <li><div><b>테스터 그룹 가입</b><a href="https://groups.google.com/g/sunshore-testers">groups.google.com/g/sunshore-testers</a></div></li>
+      <li><div><b>같은 구글 계정으로 테스트 참여 → ‘테스터 되기’</b><a href="https://play.google.com/apps/testing/com.hoftlab.sunshore">play.google.com/apps/testing/com.hoftlab.sunshore</a></div></li>
+      <li><div><b>Play 스토어에서 설치</b><a href="https://play.google.com/store/apps/details?id=com.hoftlab.sunshore">선쇼어 리조트 스토어 페이지</a> (참여 직후엔 몇 분 걸릴 수 있어요)</div></li>
+    </ol>
+    <ol class="steps" data-en>
+      <li><div><b>Join the tester group</b><a href="https://groups.google.com/g/sunshore-testers">groups.google.com/g/sunshore-testers</a></div></li>
+      <li><div><b>With the same Google account, tap “Become a tester”</b><a href="https://play.google.com/apps/testing/com.hoftlab.sunshore">play.google.com/apps/testing/com.hoftlab.sunshore</a></div></li>
+      <li><div><b>Install from Google Play</b><a href="https://play.google.com/store/apps/details?id=com.hoftlab.sunshore">Sunshore Resort on Google Play</a> (it can take a few minutes to appear)</div></li>
+    </ol>
+    <p class="ask" data-ko>정식 출시하려면 테스터가 14일 동안 참여해 있어야 해요. 2주만 지우지 말고 가끔 열어 주세요. 의견은 <a href="mailto:hoftlab@gmail.com">hoftlab@gmail.com</a>으로도 받아요.</p>
+    <p class="ask" data-en>Launching needs testers to stay in for 14 days, so please keep it installed for two weeks and open it now and then. Feedback is welcome at <a href="mailto:hoftlab@gmail.com">hoftlab@gmail.com</a>.</p>
   </div>
 </div></section>
 </main>
@@ -119,7 +150,7 @@
   <span>© 2026 hoftlab</span>
   <a href="https://sites.google.com/view/sunshore-resort-privacy"><span data-ko>개인정보처리방침</span><span data-en>Privacy Policy</span></a>
   <a href="mailto:hoftlab@gmail.com">hoftlab@gmail.com</a>
-  <a href="../">hoftlab</a>
+  <a href="../"><span data-ko>hoftlab의 다른 앱</span><span data-en>More from hoftlab</span></a>
 </div></footer>
 <script>
   (function () {
