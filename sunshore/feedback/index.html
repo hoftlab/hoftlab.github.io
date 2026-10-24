@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>선쇼어 리조트 의견 쓰기</title>
+<meta name="description" content="선쇼어 리조트 테스터 의견 시트로 가는 길">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<meta property="og:title" content="선쇼어 리조트 의견 쓰기">
+<meta property="og:description" content="누르면 구글 시트가 열려요 — 보고 느낀 점을 자유롭게 적어 주세요">
+<meta property="og:image" content="https://hoftlab.github.io/sunshore/img/feature.png">
+<style>
+  :root { --bg:#f4fbfa; --surface:#fff; --fg:#10302f; --muted:#506b6a; --line:#d8ecea; --teal:#1f9d98; --coral:#ee7358; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#0a1a1b; --surface:#122728; --fg:#e8f7f5; --muted:#9bbab8; --line:#1d3b3c; --teal:#52d1cb; --coral:#ff8f75; } }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:17px/1.6 system-ui, -apple-system, "Noto Sans KR", sans-serif; }
+  main { max-width:440px; margin:0 auto; padding:40px 16px; text-align:center; }
+  img.icon { width:72px; height:72px; border-radius:18px; }
+  h1 { font-size:1.35rem; margin:14px 0 6px; }
+  p { color:var(--muted); margin:0 0 22px; }
+  a.btn { display:block; padding:16px; margin:0 0 12px; border-radius:14px; font-weight:700; color:#fff; background:var(--teal); text-decoration:none; }
+  a.btn.alt { background:var(--surface); color:var(--fg); border:1px solid var(--line); }
+  .hint { display:none; text-align:left; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px 16px; font-size:.95rem; color:var(--fg); }
+  .hint b { color:var(--coral); }
+  small { display:block; margin-top:22px; color:var(--muted); font-size:.85rem; }
+</style>
+</head>
+<body>
+<main>
+  <img class="icon" src="../img/icon.png" alt="">
+  <h1>선쇼어 리조트 의견 쓰기</h1>
+  <p id="lead">구글 시트를 여는 중이에요…</p>
+  <a class="btn" id="app" href="#" hidden>시트 앱으로 열기</a>
+  <a class="btn alt" id="browser" href="#" hidden>크롬(브라우저)으로 열기</a>
+  <div class="hint" id="hint">채팅 앱 안에서는 구글 로그인이 안 돼서 <b>시트를 고칠 수 없어요.</b><br>오른쪽 위(또는 아래) <b>⋯ / ⋮ 메뉴 → ‘다른 브라우저로 열기’</b>나 <b>‘Safari로 열기’</b>를 눌러 주세요.</div>
+  <a class="btn alt" id="plain" href="#">그냥 열기 (보기만)</a>
+  <small>시트는 테스터 그룹에 가입한 구글 계정으로만 고칠 수 있어요.</small>
+</main>
+<script>
+  // 채팅 앱 안의 브라우저(인앱)는 구글 로그인을 막아 시트를 고칠 수 없다 → 바깥 브라우저나 시트 앱으로 넘긴다.
+  const ID = "1iMgpAaEAy4g6tRVoeGSv67NqCI42pq0VvkCHfXzPQlI";
+  const SHEET = "https://docs.google.com/spreadsheets/d/" + ID + "/edit?usp=sharing";
+  const PATH = "docs.google.com/spreadsheets/d/" + ID + "/edit?usp=sharing";
+  const ua = navigator.userAgent;
+  const android = /Android/i.test(ua);
+  const ios = /iPhone|iPad|iPod/i.test(ua);
+  const kakao = /KAKAOTALK/i.test(ua);
+  const line = /\bLine\//i.test(ua);
+  const inApp = kakao || line || /; wv\)|NAVER\(inapp|Instagram|FBAN|FBAV|BAND\/|DaumApps|everytimeApp|Whale\/.*inapp/i.test(ua);
+  const $ = (id) => document.getElementById(id);
+  $("plain").href = SHEET;
+
+  if (!inApp) {
+    location.replace(SHEET);  // 크롬·사파리·삼성 인터넷: 바로 시트로
+  } else {
+    $("lead").textContent = "채팅 앱 안에서는 시트를 고칠 수 없어요. 아래 버튼으로 열어 주세요.";
+    if (android) {
+      $("app").href = "intent://" + PATH + "#Intent;scheme=https;package=com.google.android.apps.docs.editors.sheets;end";
+      $("browser").href = "intent://" + PATH + "#Intent;scheme=https;package=com.android.chrome;end";
+      $("app").hidden = false;
+      $("browser").hidden = false;
+    }
+    if (kakao) {
+      $("browser").href = "kakaotalk://web/openExternal?url=" + encodeURIComponent(SHEET);
+      $("browser").textContent = "바깥 브라우저로 열기";
+      $("browser").hidden = false;
+      location.href = $("browser").href;  // 카카오톡은 이 주소로 기본 브라우저를 연다
+    } else if (line) {
+      location.href = SHEET + "&openExternalBrowser=1";  // 라인은 이 표시가 붙은 주소를 바깥 브라우저로 연다
+    } else if (ios) {
+      $("hint").style.display = "block";
+    }
+  }
+</script>
+</body>
+</html>
