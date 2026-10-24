@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iCare — 아이의 하루를, 함께 돌봐요 · hoftlab</title>
+<meta name="description" content="학교·학원 시간표를 가족이 함께 보고, 수업 전에 알림 받는 우리 가족 시간표 앱. 광고 없이, 아이는 별칭으로.">
+<link rel="canonical" href="https://hoftlab.github.io/icare/">
+<link rel="icon" href="img/icon.png" type="image/png">
+<meta property="og:title" content="iCare">
+<meta property="og:description" content="아이의 하루를, 함께 돌봐요 — 가족 시간표">
+<meta property="og:image" content="https://hoftlab.github.io/icare/img/feature.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#faf8ff; --surface:#fff; --fg:#1b1530; --muted:#5d5872; --line:#ebe6f7; --accent:#5b3df5; --chip:#f1ecff; --shadow:0 24px 60px -28px rgba(40,30,90,.35); }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0f0c1a; --surface:#191428; --fg:#f1edff; --muted:#a9a2c0; --line:#2a2340; --accent:#b6a3ff; --chip:#241d3a; --shadow:0 24px 60px -28px rgba(0,0,0,.7); } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.65 "Noto Sans KR", system-ui, sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  .wrap { max-width:760px; margin:0 auto; padding:0 20px; }
+  header { padding:28px 0 8px; display:flex; align-items:center; gap:12px; }
+  header .logo { font-weight:900; font-size:1.25rem; letter-spacing:-.02em; color:var(--fg); }
+  header .logo:hover { text-decoration:none; }
+  .lang { margin-left:auto; border:1px solid var(--line); background:var(--surface); color:var(--fg); border-radius:999px; padding:5px 12px; font:inherit; font-size:.85rem; cursor:pointer; }
+  .hero { display:flex; gap:20px; align-items:center; margin:36px 0 12px; }
+  .hero img { width:84px; height:84px; border-radius:22px; flex:none; box-shadow:var(--shadow); }
+  h1 { font-size:clamp(1.9rem,5vw,2.6rem); letter-spacing:-.03em; line-height:1.15; margin:0; font-weight:900; }
+  .badge { display:inline-block; font-size:.8rem; font-weight:700; color:var(--accent); background:var(--chip); border-radius:999px; padding:3px 10px; margin:10px 6px 0 0; }
+  .lead { color:var(--muted); margin:18px 0 28px; font-size:1.05rem; }
+  .shots { display:flex; gap:14px; overflow-x:auto; margin:0 -20px 28px; padding:4px 20px 18px; scroll-snap-type:x mandatory; }
+  .shots img { width:200px; flex:none; border-radius:20px; border:1px solid var(--line); box-shadow:var(--shadow); scroll-snap-align:start; background:var(--chip); }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:22px 24px; box-shadow:var(--shadow); margin-bottom:18px; }
+  .card h2 { margin:0 0 10px; font-size:1.1rem; }
+  ul, ol { margin:0; padding-left:1.2em; }
+  li { margin:.45em 0; color:var(--muted); }
+  li b { color:var(--fg); }
+  .note { margin:12px 0 0; color:var(--muted); font-size:.92rem; }
+  .links { display:flex; flex-wrap:wrap; gap:10px 22px; margin:28px 0 56px; font-weight:700; }
+  footer { border-top:1px solid var(--line); padding:26px 0 44px; color:var(--muted); font-size:.9rem; }
+  footer .wrap { display:flex; flex-wrap:wrap; gap:10px 24px; padding:0 20px; }
+  footer a { color:var(--muted); }
+  footer a:hover { color:var(--fg); }
+  html:not([lang="en"]) [data-en], html[lang="en"] [data-ko] { display:none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><a class="logo" href="../">hoftlab</a><button class="lang" id="lang" type="button" aria-label="Language">EN</button></header>
+
+  <div class="hero">
+    <img src="img/icon.png" alt="">
+    <div>
+      <h1>iCare</h1>
+      <span class="badge" data-ko>Android · 비공개 테스트 중</span><span class="badge" data-en>Android · Closed testing</span><span class="badge" data-ko>테스터 모집</span><span class="badge" data-en>Testers wanted</span>
+    </div>
+  </div>
+
+  <p class="lead" data-ko>학교부터 학원, 운동, 악기까지. 요일마다 다른 아이의 수업을 가족이 하나의 시간표로 함께 보고, 수업 시작 전에 알림을 받아 보세요.</p>
+  <p class="lead" data-en>From school to after-school classes, sports and music lessons. See each child's weekly schedule together as a family, and get a reminder before class starts. (The app is currently in Korean.)</p>
+
+  <div class="shots">
+    <img src="img/phone-1.webp" alt="" loading="lazy">
+    <img src="img/phone-2.webp" alt="" loading="lazy">
+    <img src="img/phone-3.webp" alt="" loading="lazy">
+    <img src="img/phone-4.webp" alt="" loading="lazy">
+  </div>
+
+  <div class="card">
+    <h2 data-ko>주요 기능</h2><h2 data-en>Features</h2>
+    <ul data-ko>
+      <li><b>주간 시간표</b>: 요일별 반복 수업을 한 번만 입력하면 학기 내내 보여요. 홈에서 지금 진행 중인 수업과 다음 일정을 바로 확인해요.</li>
+      <li><b>가족과 함께</b>: 초대 코드 하나로 배우자·조부모님이 같은 시간표를 보고 고칠 수 있어요. 바뀌면 다른 가족에게 알림이 가요.</li>
+      <li><b>수업 전 알림</b>: 수업 10·15·20·30분 전에 알려 줘요.</li>
+      <li><b>휴강·보강도 간단히</b>: 이번 주만 쉬는 수업, 시간이 바뀐 날, 한 번만 있는 보강을 그날만 바꿀 수 있어요.</li>
+      <li><b>학원 연락처</b>: 수업마다 학원·선생님 연락처를 붙여 두고 바로 전화해요.</li>
+      <li><b>내보내기</b>: 주간 시간표를 이미지나 PDF로 저장해 공유하거나 인쇄해요.</li>
+      <li><b>학생·자녀 폰</b>: 만 14세 이상 학생은 직접 가입할 수 있고, 보호자가 연결해 준 자녀 폰에서는 가입 없이 보기 전용으로 시간표와 알림을 받아요.</li>
+    </ul>
+    <ul data-en>
+      <li><b>Weekly timetable</b>: Enter a recurring class once and it shows all term. The home screen shows what's on now and what's next.</li>
+      <li><b>Together as a family</b>: One invite code lets a partner or grandparents view and edit the same timetable, and the others are notified of changes.</li>
+      <li><b>Reminders</b>: Get notified 10, 15, 20 or 30 minutes before class.</li>
+      <li><b>Cancellations and make-ups</b>: Change just one day for a skipped class, a moved time or a one-off make-up.</li>
+      <li><b>Academy contacts</b>: Attach the academy or teacher's number to a class and call in one tap.</li>
+      <li><b>Export</b>: Save the weekly timetable as an image or PDF to share or print.</li>
+      <li><b>Students and kids' phones</b>: Students 14 and older can sign up themselves; a phone a parent links lets a child view the schedule and get reminders without signing up (view only).</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2 data-ko>개인정보를 아껴요</h2><h2 data-en>Privacy</h2>
+    <ul data-ko>
+      <li>자녀는 실명 대신 별칭으로 등록해요.</li>
+      <li>같은 가족 그룹에 초대된 사람만 시간표를 볼 수 있어요.</li>
+      <li>광고가 없고, 개인정보를 제3자에게 팔거나 공유하지 않아요.</li>
+      <li>앱에서 바로 계정을 삭제할 수 있어요.</li>
+    </ul>
+    <ul data-en>
+      <li>Children are registered by nickname, not real name.</li>
+      <li>Only people invited to the family group can see the timetable.</li>
+      <li>No ads, and we never sell or share personal data with third parties.</li>
+      <li>You can delete your account right in the app.</li>
+    </ul>
+  </div>
+
+  <div class="card" id="join">
+    <h2 data-ko>비공개 테스트 참여 (Android)</h2><h2 data-en>Join the closed test (Android)</h2>
+    <ol data-ko>
+      <li><a href="https://groups.google.com/g/icare-testers">Google 그룹</a>에서 「그룹 가입」을 눌러요.</li>
+      <li><a href="https://play.google.com/apps/testing/com.hoftlab.icare">테스트 참여 페이지</a>에서 「테스터 되기」를 눌러요.</li>
+      <li>그 화면의 Play 스토어 링크로 iCare를 설치하고, <b>14일 동안 지우지 말아 주세요.</b></li>
+    </ol>
+    <ol data-en>
+      <li>Press “Join group” in the <a href="https://groups.google.com/g/icare-testers">Google Group</a>.</li>
+      <li>Press “Become a tester” on the <a href="https://play.google.com/apps/testing/com.hoftlab.icare">testing page</a>.</li>
+      <li>Install iCare from the Play Store link on that page and <b>please keep it installed for 14 days.</b></li>
+    </ol>
+    <p class="note" data-ko>1~3 모두 폰의 Play 스토어와 같은 Google 계정으로 해 주세요. 가입 직후에는 2번 링크가 안 보일 수 있으니 몇 분 뒤 다시 열어 보세요. 카카오 또는 네이버로 로그인해요.</p>
+    <p class="note" data-en>Use the same Google account as your phone's Play Store for all three steps. The link in step 2 may take a few minutes to appear after you join the group. Sign-in is with Kakao or Naver.</p>
+  </div>
+
+  <div class="links">
+    <a href="privacy"><span data-ko>개인정보처리방침</span><span data-en>Privacy Policy</span> →</a>
+    <a href="terms"><span data-ko>이용약관</span><span data-en>Terms</span></a>
+    <a href="support"><span data-ko>고객 지원</span><span data-en>Support</span></a>
+    <a href="delete-account"><span data-ko>계정 삭제</span><span data-en>Delete account</span></a>
+    <a href="mailto:hoftlab@gmail.com">hoftlab@gmail.com</a>
+    <a href="../"><span data-ko>hoftlab 홈</span><span data-en>hoftlab home</span></a>
+  </div>
+</div>
+<footer><div class="wrap">
+  <span>© 2026 hoftlab</span>
+  <a href="privacy"><span data-ko>iCare 개인정보처리방침</span><span data-en>iCare privacy</span></a>
+</div></footer>
+<script>
+  (function () {
+    var root = document.documentElement, btn = document.getElementById('lang');
+    function set(l) { root.lang = l; btn.textContent = l === 'ko' ? 'EN' : '한국어'; try { localStorage.setItem('lang', l); } catch (e) {} }
+    var saved = null; try { saved = localStorage.getItem('lang'); } catch (e) {}
+    set(saved || ((navigator.language || 'ko').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en'));
+    btn.addEventListener('click', function () { set(root.lang === 'ko' ? 'en' : 'ko'); });
+  })();
+</script>
+</body>
+</html>
