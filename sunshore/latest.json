@@ -1,7 +1,7 @@
 {
-  "version": "0.9.22",
-  "code": 29,
-  "notes": "친구 리조트 구경 중 장부가 떠서 못 나가던 것 고침 · 구경 중엔 ‘내 리조트로’가 늘 눌려요",
+  "version": "0.9.23",
+  "code": 30,
+  "notes": "새 가게는 다음 날부터 경관에 · 경관이 떨어지면 건물과 이유를 알려 줘요 · 리조트 창 ‘경관이 낮은 곳’",
   "url": "https://play.google.com/store/apps/details?id=com.hoftlab.sunshore",
   "min_version": "0.9.0"
 }
