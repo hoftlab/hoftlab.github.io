@@ -3,108 +3,83 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WaitCall — 마지막 인사를 끝까지 · hoftlab</title>
-<meta name="description" content="상대방의 마지막 인사를 끊지 않도록, 버튼 한 번이면 몇 초 뒤 통화를 끝내 주는 Android 앱. 기본 전화 앱은 그대로.">
+<meta name="theme-color" content="#46695f">
+<title>WaitCall — 마지막 인사까지, 여유 있게 · hoftlab</title>
+<meta name="description" content="기본 전화 앱은 그대로. 통화 중 한 번 예약하고 1~15초 뒤 종료를 요청하세요. 광고 없는 첫 출시를 준비 중인 Android 통화 종료 예약 앱, WaitCall.">
 <link rel="canonical" href="https://hoftlab.github.io/waitcall/">
-<link rel="icon" href="../icon.svg" type="image/svg+xml">
-<meta property="og:title" content="WaitCall">
-<meta property="og:description" content="마지막 인사를 끝까지 듣고, 3초 뒤 통화 끝내기">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="icon" href="img/icon.png" type="image/png">
+<link rel="apple-touch-icon" href="img/icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WaitCall — 마지막 인사까지, 여유 있게">
+<meta property="og:description" content="기본 전화 앱은 그대로, 기다리는 시간은 내 마음대로. 광고 없는 첫 출시를 준비하고 있어요.">
+<meta property="og:url" content="https://hoftlab.github.io/waitcall/">
+<meta property="og:image" content="https://hoftlab.github.io/waitcall/img/feature.png">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="500">
+<meta name="twitter:card" content="summary_large_image">
 <style>
-  :root { --bg:#faf8ff; --surface:#fff; --fg:#1b1530; --muted:#5d5872; --line:#ebe6f7; --accent:#5b3df5; --chip:#f1ecff; --shadow:0 24px 60px -28px rgba(40,30,90,.35); }
-  @media (prefers-color-scheme: dark) { :root { --bg:#0f0c1a; --surface:#191428; --fg:#f1edff; --muted:#a9a2c0; --line:#2a2340; --accent:#b6a3ff; --chip:#241d3a; --shadow:0 24px 60px -28px rgba(0,0,0,.7); } }
-  * { box-sizing: border-box; }
-  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.65 "Noto Sans KR", system-ui, sans-serif; -webkit-font-smoothing:antialiased; }
-  a { color:var(--accent); text-decoration:none; }
-  a:hover { text-decoration:underline; }
-  .wrap { max-width:760px; margin:0 auto; padding:0 20px; }
-  header { padding:28px 0 8px; display:flex; align-items:center; gap:12px; }
-  header .logo { font-weight:900; font-size:1.25rem; letter-spacing:-.02em; color:var(--fg); }
-  header .logo:hover { text-decoration:none; }
-  .lang { margin-left:auto; border:1px solid var(--line); background:var(--surface); color:var(--fg); border-radius:999px; padding:5px 12px; font:inherit; font-size:.85rem; cursor:pointer; }
-  .hero { display:flex; gap:20px; align-items:center; margin:36px 0 12px; }
-  .hero img { width:84px; height:84px; border-radius:22px; flex:none; box-shadow:var(--shadow); }
-  h1 { font-size:clamp(1.9rem,5vw,2.6rem); letter-spacing:-.03em; line-height:1.15; margin:0; font-weight:900; }
-  .badge { display:inline-block; font-size:.8rem; font-weight:700; color:var(--accent); background:var(--chip); border-radius:999px; padding:3px 10px; margin-top:10px; }
-  .lead { color:var(--muted); margin:18px 0 28px; font-size:1.05rem; }
-  .card { background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:22px 24px; box-shadow:var(--shadow); margin-bottom:18px; }
-  .card h2 { margin:0 0 10px; font-size:1.1rem; }
-  ul { margin:0; padding-left:1.2em; }
-  li { margin:.45em 0; color:var(--muted); }
-  li b { color:var(--fg); }
-  .links { display:flex; flex-wrap:wrap; gap:10px 22px; margin:28px 0 56px; font-weight:700; }
-  footer { border-top:1px solid var(--line); padding:26px 0 44px; color:var(--muted); font-size:.9rem; }
-  footer .wrap { display:flex; flex-wrap:wrap; gap:10px 24px; padding:0 20px; }
-  footer a { color:var(--muted); }
-  footer a:hover { color:var(--fg); }
-  html:not([lang="en"]) [data-en], html[lang="en"] [data-ko] { display:none !important; }
+:root{color-scheme:light dark;--bg:#f4faf6;--paper:#fff;--soft:#e8f1eb;--ink:#172b23;--muted:#52685e;--green:#46695f;--on-green:#fff;--line:#d6e3da;--ring:#c0d5c8;--shadow:0 24px 70px -28px #274e3b40}
+@media(prefers-color-scheme:dark){:root{--bg:#0e1512;--paper:#171f1a;--soft:#202e25;--ink:#e4ede7;--muted:#b0c2b7;--green:#9cc7b9;--on-green:#13362c;--line:#33493e;--ring:#39584a;--shadow:0 24px 70px -28px #0009}}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.75 system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;-webkit-font-smoothing:antialiased}a{color:var(--green);text-underline-offset:4px}button{font:inherit}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--green);outline-offset:5px}.wrap{max-width:1120px;margin:auto;padding:0 28px}.skip{position:absolute;left:16px;top:-100px;background:var(--paper);padding:12px;z-index:10}.skip:focus{top:12px}.top{display:flex;align-items:center;gap:16px;padding:26px 0}.wordmark{font-size:20px;font-weight:800;letter-spacing:-.04em;text-decoration:none;color:var(--ink)}.top .divider{height:18px;width:1px;background:var(--line)}.top .product{display:flex;align-items:center;gap:8px;font-weight:650;color:var(--muted)}.product img{width:26px;height:26px;border-radius:8px}.lang{margin-left:auto;padding:6px 14px;background:var(--paper);border:1px solid var(--line);color:var(--ink);border-radius:30px;cursor:pointer}.hero{display:grid;grid-template-columns:1.15fr 1fr;gap:70px;align-items:center;padding:58px 0 64px}.eyebrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;color:var(--green);font-size:13px;font-weight:700;letter-spacing:.03em}.dot{width:7px;height:7px;border-radius:50%;background:currentColor}.eyebrow .status{margin-left:4px;padding:3px 10px;border:1px solid var(--line);border-radius:20px;font-weight:500;letter-spacing:0}h1{font-size:clamp(40px,5.3vw,64px);line-height:1.22;letter-spacing:-.06em;margin:24px 0 22px;font-weight:750;word-break:keep-all}.lead{font-size:18px;line-height:1.9;max-width:29em;color:var(--muted);word-break:keep-all}.actions{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 20px}.button{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:10px 22px;border:1px solid var(--line);border-radius:30px;text-decoration:none;font-weight:650;background:var(--paper);color:var(--green)}.button.primary{color:var(--on-green);background:var(--green);border-color:var(--green)}.traits{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--muted)}.traits span{padding:3px 11px;border-radius:20px;background:var(--soft)}.hero-visual{position:relative;display:flex;flex-direction:column;align-items:center;padding:32px 24px 16px;border-radius:44px;background:var(--soft)}.hero-visual:before{content:"";position:absolute;inset:55px 0 70px;border:1px solid var(--ring);border-radius:50%;pointer-events:none}.phone{position:relative;width:min(100%,262px);padding:7px;background:#263c31;border-radius:30px;box-shadow:var(--shadow)}.phone img{display:block;width:100%;height:auto;border-radius:24px}.caption{position:relative;text-align:center;margin:18px 0 0;color:var(--muted);font-size:12px}.section{padding:64px 0;border-top:1px solid var(--line)}.section-head{max-width:640px;margin-bottom:32px}.kicker{text-transform:uppercase;color:var(--green);font-size:12px;letter-spacing:.12em;font-weight:750}h2{font-size:clamp(28px,3.4vw,40px);line-height:1.3;letter-spacing:-.045em;margin:10px 0 14px;word-break:keep-all}h3{font-size:20px;line-height:1.4;letter-spacing:-.025em;margin:0 0 10px}.section-head p,.feature p,.step p{color:var(--muted);margin:0;word-break:keep-all}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;list-style:none;margin:0;padding:0}.step{padding-top:22px;border-top:2px solid var(--ring)}.number{display:inline-flex;align-items:center;justify-content:center;color:var(--green);background:var(--soft);width:38px;height:38px;border-radius:12px;font-size:14px;font-weight:700;margin-bottom:20px}.features{display:grid;grid-template-columns:1fr 1fr;gap:18px}.feature{background:var(--paper);border:1px solid var(--line);padding:28px;border-radius:26px}.feature .tag{display:block;font-size:12px;font-weight:650;color:var(--green);margin-bottom:14px}.screens{display:grid;grid-template-columns:1fr 1fr;gap:30px}.screen{margin:0;min-width:0;padding:28px 24px 0;border-radius:32px;background:var(--soft);border:1px solid var(--line);overflow:hidden}.screen figcaption{margin-bottom:22px}.screen p{color:var(--muted);margin:0;font-size:14px}.screen img{display:block;width:min(100%,285px);height:auto;margin:auto;border:6px solid #263c31;border-bottom:0;border-radius:26px 26px 0 0;box-shadow:var(--shadow)}.privacy{display:grid;grid-template-columns:1fr 1fr;gap:48px;background:var(--soft);padding:36px;border-radius:30px}.privacy h2{margin-top:0}.privacy ul{list-style:none;margin:0;padding:0}.privacy li{padding:12px 0;border-bottom:1px solid var(--ring);color:var(--muted)}.privacy li:first-child{padding-top:0}.privacy li:last-child{border:0}.privacy a{font-weight:650}.faq{max-width:850px}details{border-bottom:1px solid var(--line);padding:18px 0}summary{font-weight:650;cursor:pointer;list-style-position:outside;margin-left:20px;padding-left:5px}details p{color:var(--muted);margin:12px 0 0 25px}.availability{display:flex;align-items:center;justify-content:space-between;gap:30px;border:1px solid var(--line);border-radius:28px;padding:32px;background:var(--paper)}.availability h2{font-size:27px;margin-top:0}.availability p{max-width:48em;margin:0;color:var(--muted);font-size:14px}.availability .button{flex:none}footer{margin-top:64px;padding:28px 0 40px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}footer .wrap{display:flex;align-items:center;flex-wrap:wrap;gap:14px 24px}footer a{color:var(--muted)}.updated{margin-left:auto}html:not([lang="en"]) [data-en],html[lang="en"] [data-ko]{display:none!important}
+@media(max-width:800px){.hero{grid-template-columns:1fr;gap:36px;padding-top:28px}.hero-copy{max-width:620px}.hero-visual{max-width:440px;width:100%;margin:auto}.steps{grid-template-columns:1fr;gap:24px}.step{display:grid;grid-template-columns:40px 1fr;column-gap:18px}.number{grid-row:1/3}.step h3{margin-top:4px}.step p{grid-column:2}.privacy{grid-template-columns:1fr;gap:20px}.availability{align-items:flex-start;flex-direction:column}.section{padding:44px 0}}
+@media(max-width:520px){.wrap{padding:0 20px}.top{padding:20px 0}.top .product{font-size:14px}.top .divider{display:none}h1{font-size:42px}.lead{font-size:16px}.features,.screens{grid-template-columns:1fr}.feature{padding:24px}.screens{gap:20px}.privacy{padding:26px}.screen{padding:24px 20px 0}.hero{padding-bottom:44px}.hero-visual{padding:24px 22px 12px;border-radius:32px}.phone{width:248px}.updated{margin-left:0;width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
+<a class="skip" href="#main"><span data-ko>본문 바로가기</span><span data-en>Skip to content</span></a>
 <div class="wrap">
-  <header><a class="logo" href="../">hoftlab</a><button class="lang" id="lang" type="button" aria-label="Language">EN</button></header>
-
-  <div class="hero">
-    <img src="../icon.svg" alt="">
-    <div>
-      <h1>WaitCall</h1>
-      <span class="badge" data-ko>Android · 테스트 준비 중</span><span class="badge" data-en>Android · Preparing for testing</span>
-    </div>
-  </div>
-
-  <p class="lead" data-ko>마지막 인사를 끝까지 듣고, 버튼 한 번이면 몇 초 뒤 통화를 끝내 줘요. 기본 전화 앱은 그대로 두고, 끊는 시점만 조금 더 편하게.</p>
-  <p class="lead" data-en>Hear the other person's last goodbye, then end the call a few seconds after one tap. Your default phone app stays as it is.</p>
-
-  <div class="card">
-    <h2 data-ko>이렇게 써요</h2><h2 data-en>How it works</h2>
-    <ul data-ko>
-      <li><b>예약</b>: 통화 중 「3초 후 종료」를 누르면 카운트다운이 시작돼요. 다시 누르면 취소돼요.</li>
-      <li><b>어디서나</b>: 플로팅 버튼(선택), 빠른 설정 타일, 알림 중 편한 곳에서 누를 수 있어요.</li>
-      <li><b>마이크 끄기</b>: 카운트다운 동안 내 마이크를 꺼서 상대방에게 내 소리가 가지 않아요(설정에서 끌 수 있어요).</li>
-      <li><b>1~15초</b>: 기다릴 시간을 골라요.</li>
-    </ul>
-    <ul data-en>
-      <li><b>Schedule</b>: Tap "End in 3 seconds" during a call to start a countdown. Tap again to cancel.</li>
-      <li><b>From anywhere</b>: Use the optional floating button, the Quick Settings tile, or the notification.</li>
-      <li><b>Mic off</b>: Your microphone is muted during the countdown so nothing you say reaches the other person (can be turned off in settings).</li>
-      <li><b>1–15 seconds</b>: Choose how long to wait.</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2 data-ko>개인정보</h2><h2 data-en>Privacy</h2>
-    <ul data-ko>
-      <li>전화번호, 연락처, 통화 기록, 통화 녹음을 수집하지 않아요.</li>
-      <li>인터넷 권한이 없어서 기기 밖으로 데이터를 보내지 않아요. 광고와 분석 도구도 없어요.</li>
-      <li>설정값은 기기 안에만 저장돼요.</li>
-    </ul>
-    <ul data-en>
-      <li>We don't collect phone numbers, contacts, call history or call recordings.</li>
-      <li>The app has no internet permission, so it sends no data off the device. No ads, no analytics.</li>
-      <li>Settings stay on the device only.</li>
-    </ul>
-  </div>
-
-  <div class="links">
-    <a href="privacy.html"><span data-ko>개인정보처리방침</span><span data-en>Privacy Policy</span> →</a>
-    <a href="mailto:hoftlab@gmail.com">hoftlab@gmail.com</a>
-    <a href="../"><span data-ko>hoftlab 홈</span><span data-en>hoftlab home</span></a>
-  </div>
+<header class="top"><a class="wordmark" href="../">hoftlab</a><span class="divider" aria-hidden="true"></span><span class="product"><img src="img/icon.png" alt="" width="26" height="26">WaitCall</span><button class="lang" id="lang" type="button" aria-label="Switch to English">EN</button></header>
+<main id="main">
+<section class="hero" aria-labelledby="hero-title">
+<div class="hero-copy">
+<div class="eyebrow"><span class="dot" aria-hidden="true"></span>ANDROID<span class="status" data-ko>내부 테스트 · 첫 출시 준비 중</span><span class="status" data-en>Internal testing · Preparing for launch</span></div>
+<h1 id="hero-title"><span data-ko>마지막 인사까지,<br>여유 있게.</span><span data-en>A little time<br>for the last goodbye.</span></h1>
+<p class="lead" data-ko>내 인사를 마치고, 상대방의 인사도 끝까지.<br>통화 중 한 번 예약하면 원하는 시간만큼 기다렸다가 통화 종료를 요청해요. 기본 전화 앱은 그대로예요.</p>
+<p class="lead" data-en>Finish your goodbye and hear theirs, too. One tap schedules a hangup after the time you choose. Keep using your default phone app.</p>
+<div class="actions"><a class="button primary" href="#how"><span data-ko>사용 방법 보기</span><span data-en>See how it works</span></a><a class="button" href="#availability"><span data-ko>테스트 안내</span><span data-en>Testing status</span></a></div>
+<div class="traits"><span data-ko>광고 없는 첫 출시 준비</span><span data-en>Ad-free launch in preparation</span><span data-ko>회원가입 없이</span><span data-en>No account</span><span data-ko>1~15초 선택</span><span data-en>Choose 1–15 seconds</span></div>
 </div>
-<footer><div class="wrap">
-  <span>© 2026 hoftlab</span>
-  <a href="privacy.html"><span data-ko>WaitCall 개인정보처리방침</span><span data-en>WaitCall privacy</span></a>
-</div></footer>
+<div class="hero-visual"><div class="phone"><img src="img/home.png" alt="WaitCall 홈 화면: 통화 대기 상태와 빠른 실행 안내" data-alt-ko="WaitCall 홈 화면: 통화 대기 상태와 빠른 실행 안내" data-alt-en="WaitCall home screen showing call status and quick access setup" width="1080" height="1920" fetchpriority="high"></div><p class="caption"><span data-ko>현재 개발 빌드의 실제 화면 · 대기 상태</span><span data-en>Actual development build · Waiting for a call</span></p></div>
+</section>
+<section class="section" id="how" aria-labelledby="how-title">
+<div class="section-head"><span class="kicker">HOW IT WORKS</span><h2 id="how-title"><span data-ko>예약하고, 듣고,<br>필요하면 취소해요.</span><span data-en>Schedule. Listen.<br>Cancel if you need to.</span></h2><p data-ko>통화가 진행 중일 때만 예약할 수 있어요. 통화 상태가 바뀌거나 확인되지 않으면 예약을 취소해요.</p><p data-en>Schedule only during an active call. If call state changes or cannot be verified, the countdown is cancelled.</p></div>
+<ol class="steps">
+<li class="step"><span class="number">01</span><h3 data-ko>한 번 준비해요</h3><h3 data-en>Set up once</h3><p data-ko>전화 권한을 허용하고 기다릴 시간을 골라요. 빠른 설정 타일을 추가하면 다음 통화에서 더 편해요.</p><p data-en>Allow phone permissions and choose a delay. Add a Quick Settings tile for easier access on your next call.</p></li>
+<li class="step"><span class="number">02</span><h3 data-ko>통화 중에 예약해요</h3><h3 data-en>Schedule during a call</h3><p data-ko>마지막 인사를 마쳤다면 「3초 후 종료」를 눌러요. 설정한 시간만큼 카운트다운이 시작돼요.</p><p data-en>When you've said goodbye, tap “End in 3 seconds.” The countdown uses your chosen delay.</p></li>
+<li class="step"><span class="number">03</span><h3 data-ko>더 이야기해도 괜찮아요</h3><h3 data-en>Keep talking if you want</h3><p data-ko>앱에서는 「계속 통화하기」로 취소해요. 타일·알림·플로팅 버튼에서도 예약을 취소할 수 있어요.</p><p data-en>Tap “Keep talking” in the app to cancel. You can also cancel from the tile, notification, or floating button.</p></li>
+</ol>
+</section>
+<section class="section" aria-labelledby="features-title">
+<div class="section-head"><span class="kicker">MADE FOR YOUR CALLS</span><h2 id="features-title"><span data-ko>내 통화에 맞는 작은 설정.</span><span data-en>Small choices for your calls.</span></h2></div>
+<div class="features">
+<article class="feature"><span class="tag" data-ko>빠른 실행</span><span class="tag" data-en>QUICK ACCESS</span><h3 data-ko>편한 곳에서 누르세요</h3><h3 data-en>Use the button that suits you</h3><p data-ko>앱 화면, 알림, 빠른 설정 타일에서 예약해요. 선택 기능인 플로팅 버튼을 켜면 통화 화면 위에서 바로 누를 수 있어요.</p><p data-en>Use the app, notification, or Quick Settings tile. Enable the optional floating button for an action right over your call screen.</p></article>
+<article class="feature"><span class="tag" data-ko>1~15초</span><span class="tag" data-en>1–15 SECONDS</span><h3 data-ko>인사에 필요한 만큼</h3><h3 data-en>Give your goodbye enough time</h3><p data-ko>기본은 3초. 2·3·5·10초 빠른 선택과 1초 단위 슬라이더로 기다릴 시간을 바꿔요.</p><p data-en>Start with 3 seconds. Pick a 2, 3, 5, or 10-second preset, or use the slider to choose any delay from 1 to 15 seconds.</p></article>
+<article class="feature"><span class="tag" data-ko>선택 기능</span><span class="tag" data-en>OPTIONAL CONTROLS</span><h3 data-ko>내 마이크와 진동도</h3><h3 data-en>Choose mic muting and vibration</h3><p data-ko>카운트다운 동안 내 마이크를 끄거나, 매초 짧은 진동으로 남은 시간을 느낄 수 있어요. 설정에서 각각 바꿔요.</p><p data-en>Mute your microphone during the countdown or feel a short vibration each second. Control both options in settings.</p></article>
+<article class="feature"><span class="tag" data-ko>자동화 연동</span><span class="tag" data-en>AUTOMATION</span><h3 data-ko>쓰던 자동화 앱과 함께</h3><h3 data-en>Use your existing automation apps</h3><p data-ko>MacroDroid·Tasker의 명령으로 예약·취소할 수 있어요. 직접 켠 경우에만 사용하며, 앱에서 만든 토큰이 일치해야 명령을 받아요.</p><p data-en>Schedule and cancel with MacroDroid or Tasker commands. Integration stays off until you enable it, and commands need a matching token.</p></article>
+</div>
+</section>
+<section class="section" aria-labelledby="screens-title">
+<div class="section-head"><span class="kicker">IN THE APP</span><h2 id="screens-title"><span data-ko>단순하게 고르고, 바로 확인해요.</span><span data-en>Simple controls, clear choices.</span></h2><p data-ko>광고 없는 첫 출시를 준비하는 현재 개발 빌드의 실제 화면이에요.</p><p data-en>Actual screens from the current development build for the ad-free launch.</p></div>
+<div class="screens">
+<figure class="screen"><figcaption><h3 data-ko>통화 중 더 빠르게</h3><h3 data-en>Quicker access during calls</h3><p data-ko>플로팅 버튼과 빠른 설정 타일을 준비해요.</p><p data-en>Set up a floating button or Quick Settings tile.</p></figcaption><img src="img/quick-access.png" width="1080" height="1920" loading="lazy" alt="플로팅 버튼과 빠른 설정 타일 선택 화면" data-alt-ko="플로팅 버튼과 빠른 설정 타일 선택 화면" data-alt-en="Floating button and Quick Settings tile options"></figure>
+<figure class="screen"><figcaption><h3 data-ko>시간도, 소리도 내 방식대로</h3><h3 data-en>Your timing, your preferences</h3><p data-ko>지연 시간·마이크·진동·알림을 한곳에서 바꿔요.</p><p data-en>Adjust delay, mic muting, vibration, and notifications.</p></figcaption><img src="img/settings.png" width="1080" height="1920" loading="lazy" alt="1~15초 지연 시간과 마이크·진동·알림 설정 화면" data-alt-ko="1~15초 지연 시간과 마이크·진동·알림 설정 화면" data-alt-en="Delay, microphone, vibration and notification settings"></figure>
+</div>
+</section>
+<section class="section" aria-labelledby="privacy-title"><div class="privacy">
+<div><span class="kicker">PRIVACY</span><h2 id="privacy-title"><span data-ko>통화 정보는<br>휴대폰 안에.</span><span data-en>Call information<br>stays on your phone.</span></h2><a href="privacy.html"><span data-ko>개인정보처리방침 읽기 →</span><span data-en>Read the privacy policy →</span></a></div>
+<ul data-ko><li>광고·분석 SDK와 인터넷 권한을 제거한 첫 출시 빌드를 준비하고 있어요.</li><li>전화번호·연락처·통화 기록을 읽거나 모으지 않고, 음성을 녹음하지 않아요.</li><li>앱은 설정과 통화 정보를 서버로 전송하지 않아요. 앱 데이터 삭제나 제거로 저장된 설정을 지울 수 있어요.</li></ul>
+<ul data-en><li>The upcoming launch build has no ads, analytics SDKs, or internet permission.</li><li>No reading or collection of phone numbers, contacts, or call history. No voice recording.</li><li>The app does not send settings or call information to servers. Clear app data or uninstall to remove stored settings.</li></ul>
+</div></section>
+<section class="section faq" aria-labelledby="faq-title"><div class="section-head"><span class="kicker">GOOD TO KNOW</span><h2 id="faq-title"><span data-ko>사용하기 전에 알아두세요.</span><span data-en>A few things to know.</span></h2></div>
+<details><summary><span data-ko>기본 전화 앱을 바꿔야 하나요?</span><span data-en>Do I need to change my phone app?</span></summary><p data-ko>아니요. 기본 전화 앱은 유지해요. WaitCall은 허용받은 권한으로 통화 상태를 확인하고 통화 종료를 시스템에 요청하는 보조 도구예요.</p><p data-en>No. WaitCall is a companion utility that checks call state and asks the system to end the call using the permissions you grant.</p></details>
+<details><summary><span data-ko>어떤 권한이 필요한가요?</span><span data-en>Which permissions does it need?</span></summary><p data-ko>통화 상태 확인과 통화 종료 권한이 필요해요. 알림과 실시간 알림, 다른 앱 위에 표시 권한은 사용하는 기능에 따라 필요할 수 있어요. 플로팅 버튼은 선택 기능이에요.</p><p data-en>Phone-state and call-ending permissions are required. Notifications, live updates, and display-over-other-apps permissions depend on the features you use. The floating button is optional.</p></details>
+<details><summary><span data-ko>모든 기기에서 같은 방식으로 동작하나요?</span><span data-en>Does it work the same on every device?</span></summary><p data-ko>기기와 Android 버전, 전화 앱에 따라 종료 동작과 알림 표시가 달라질 수 있어요. 현재 실제 통화에서의 호환성을 검증하고 있어요. 통화 상태가 불확실하면 종료를 진행하지 않아요.</p><p data-en>Hangup behavior and notifications can vary by device, Android version, and phone app. Real-call compatibility is still being tested. The app does not hang up when call state is uncertain.</p></details>
+</section>
+<section class="section" id="availability" aria-labelledby="availability-title"><div class="availability"><div><span class="kicker">RELEASE STATUS</span><h2 id="availability-title"><span data-ko>첫 출시를 준비하고 있어요.</span><span data-en>Getting ready for the first launch.</span></h2><p data-ko>현재 내부 테스트 단계이며, 비공개 테스트와 새 빌드 배포를 준비 중이에요. 아직 일반 사용자를 위한 설치 링크는 제공하지 않아요. 테스트 문의나 의견은 이메일로 보내 주세요.</p><p data-en>WaitCall is in internal testing. Closed testing and a new build are being prepared, so a public installation link is not available yet. Email us with testing questions or feedback.</p></div><a class="button" href="mailto:hoftlab@gmail.com"><span data-ko>테스트 문의하기</span><span data-en>Ask about testing</span></a></div></section>
+</main></div>
+<footer><div class="wrap"><span>© 2026 hoftlab</span><a href="../"><span data-ko>모든 앱</span><span data-en>All apps</span></a><a href="privacy.html"><span data-ko>개인정보처리방침</span><span data-en>Privacy policy</span></a><a href="mailto:hoftlab@gmail.com">hoftlab@gmail.com</a><span class="updated"><span data-ko>업데이트 2026.10.26</span><span data-en>Updated October 26, 2026</span></span></div></footer>
 <script>
-  (function () {
-    var root = document.documentElement, btn = document.getElementById('lang');
-    function set(l) { root.lang = l; btn.textContent = l === 'ko' ? 'EN' : '한국어'; try { localStorage.setItem('lang', l); } catch (e) {} }
-    var saved = null; try { saved = localStorage.getItem('lang'); } catch (e) {}
-    set(saved || ((navigator.language || 'ko').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en'));
-    btn.addEventListener('click', function () { set(root.lang === 'ko' ? 'en' : 'ko'); });
-  })();
+(function(){var root=document.documentElement,btn=document.getElementById('lang');function set(l){root.lang=l;document.title=l==='ko'?'WaitCall — 마지막 인사까지, 여유 있게 · hoftlab':'WaitCall — Time for the last goodbye · hoftlab';document.querySelectorAll('[data-alt-en]').forEach(function(img){img.alt=img.getAttribute(l==='ko'?'data-alt-ko':'data-alt-en')});btn.textContent=l==='ko'?'EN':'한국어';btn.setAttribute('aria-label',l==='ko'?'Switch to English':'한국어로 보기');try{localStorage.setItem('lang',l)}catch(e){}}var saved;try{saved=localStorage.getItem('lang')}catch(e){}set(saved==='ko'||saved==='en'?saved:((navigator.language||'ko').toLowerCase().startsWith('ko')?'ko':'en'));btn.addEventListener('click',function(){set(root.lang==='ko'?'en':'ko')})})();
 </script>
-</body>
-</html>
+</body></html>

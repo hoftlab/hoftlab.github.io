@@ -39,6 +39,9 @@
   .app .desc { margin-top:12px; font-size:.95rem; }
   .tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; }
   .tag { display:inline-block; font-size:.8rem; font-weight:700; color:var(--accent); background:var(--chip); border-radius:999px; padding:3px 10px; }
+  .waitcall .tag { color:#46695f; background:#e8f1eb; }
+  .waitcall .more { color:#46695f; }
+  @media (prefers-color-scheme: dark) { .waitcall .tag { color:#9cc7b9; background:#20372b; } .waitcall .more { color:#9cc7b9; } }
   .more { margin-top:auto; padding-top:16px; font-weight:700; color:var(--accent); font-size:.95rem; }
   .games-link { display:flex; align-items:center; gap:14px; margin:0 0 22px; background:var(--chip); border-radius:20px; padding:16px 20px; color:var(--fg); font-size:.95rem; }
   .games-link b { color:var(--accent); }
@@ -61,8 +64,8 @@
     <button class="lang" id="lang" type="button" aria-label="Language">EN</button></header>
   <h1 data-ko>작지만 끝까지 만든<br>모바일 앱과 게임</h1>
   <h1 data-en>Small mobile apps and games,<br>made all the way</h1>
-  <p class="lead" data-ko>휴대폰 안에서 끝나는 도구와, 오래 가꾸는 게임. 회원 가입 없이 바로 쓰고, 내 사진과 저장은 내 휴대폰에만 남아요.</p>
-  <p class="lead" data-en>Tools that finish on your phone and games you tend for a long time. No sign-up, and your photos and saves stay on your phone.</p>
+  <p class="lead" data-ko>일상을 조금 편하게 만드는 앱과, 오래 가꾸는 게임. 앱마다 다른 기능과 사용 방법, 테스트 소식을 확인해 보세요.</p>
+  <p class="lead" data-en>Apps that make daily life a little easier and games you tend over time. Explore each app’s features, how it works, and its latest testing news.</p>
   <a class="games-link" href="games/">
     <span data-ko><b>새로 생겼어요</b> · 설치 없이 브라우저에서 바로 하는 게임 「범인은 접속 중」</span>
     <span data-en><b>New</b> · A game you can play right in the browser: “The Culprit Is Online”</span>
@@ -89,14 +92,15 @@
       <div class="tags"><span class="tag" data-ko>Android · 비공개 테스트 중</span><span class="tag" data-en>Android · Closed testing</span><span class="tag" data-ko>테스터 모집</span><span class="tag" data-en>Testers wanted</span></div>
       <span class="more" data-ko>자세히 보기 →</span><span class="more" data-en>Learn more →</span>
     </a>
-    <a class="app" href="waitcall/">
-      <div class="row"><img class="ico" src="icon.svg" alt="">
+    <a class="app waitcall" href="waitcall/">
+      <img class="cover" src="waitcall/img/feature.png" alt="WaitCall — 마지막 인사까지, 여유 있게" width="1024" height="500" loading="lazy">
+      <div class="row"><img class="ico" src="waitcall/img/icon.png" alt="" width="48" height="48">
         <div><h2>WaitCall</h2>
-        <p data-ko>마지막 인사를 끝까지 듣고, 3초 뒤 통화 끝내기</p><p data-en>Hear the last goodbye, then end the call in 3 seconds</p></div></div>
-      <p class="desc" data-ko>통화 중 버튼 한 번이면 몇 초 뒤 통화를 끝내 줘요. 기본 전화 앱은 그대로, 인터넷 권한 없이 기기 안에서만.</p>
-      <p class="desc" data-en>One tap during a call ends it a few seconds later. Your default phone app stays the same, with no internet permission and everything on the device.</p>
-      <div class="tags"><span class="tag" data-ko>Android · 테스트 준비 중</span><span class="tag" data-en>Android · Preparing for testing</span></div>
-      <span class="more" data-ko>자세히 보기 →</span><span class="more" data-en>Learn more →</span>
+        <p data-ko>마지막 인사 뒤, 통화 종료 예약</p><p data-en>A little time for the last goodbye</p></div></div>
+      <p class="desc" data-ko>기본 전화 앱은 그대로. 1~15초 뒤 종료를 예약하고, 필요하면 취소해요. 광고 없는 첫 출시를 준비하고 있어요.</p>
+      <p class="desc" data-en>Keep your phone app. Schedule a hangup in 1–15 seconds and cancel if you need to. Preparing for an ad-free first launch.</p>
+      <div class="tags"><span class="tag" data-ko>Android · 내부 테스트</span><span class="tag" data-en>Android · Internal testing</span><span class="tag" data-ko>첫 출시 준비 중</span><span class="tag" data-en>Preparing for launch</span></div>
+      <span class="more" data-ko>사용 방법과 테스트 안내 →</span><span class="more" data-en>How it works &amp; testing status →</span>
     </a>
     <a class="app" href="icare/">
       <img class="cover" src="icare/img/cover.webp" alt="">
@@ -118,7 +122,7 @@
   <a href="https://sites.google.com/view/sunshore-resort-privacy"><span data-ko>선쇼어 리조트 개인정보처리방침</span><span data-en>Sunshore Resort privacy</span></a>
   <a href="privacy.html"><span data-ko>움짤 스튜디오 개인정보처리방침</span><span data-en>GIF Studio privacy</span></a>
   <a href="waitcall/privacy.html"><span data-ko>WaitCall 개인정보처리방침</span><span data-en>WaitCall privacy</span></a>
-  <a href="icare/privacy"><span data-ko>iCare 개인정보처리방침</span><span data-en>iCare privacy</span></a>
+  <a href="icare/privacy.html"><span data-ko>iCare 개인정보처리방침</span><span data-en>iCare privacy</span></a>
 </div></footer>
 <script>
   (function () {
