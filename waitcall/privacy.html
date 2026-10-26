@@ -1,120 +1,30 @@
 <!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
+<html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>개인정보처리방침 · WaitCall — hoftlab</title>
-<link rel="icon" href="../icon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<title>WaitCall 개인정보처리방침 · hoftlab</title>
 <style>
-  :root { --bg: #faf8ff; --fg: #1b1530; --muted: #5d5872; --line: #ebe6f7; --accent: #5b3df5; }
-  @media (prefers-color-scheme: dark) { :root { --bg: #0f0c1a; --fg: #f1edff; --muted: #a9a2c0; --line: #2a2340; --accent: #b6a3ff; } }
-  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.7 "Noto Sans KR", system-ui, -apple-system, sans-serif; }
-  .top { border-bottom: 1px solid var(--line); }
-  .top div { max-width: 760px; margin: 0 auto; padding: 0 16px; height: 60px; display: flex; align-items: center; }
-  .top a.brand { display: flex; align-items: center; gap: 10px; font-weight: 900; color: var(--fg); text-decoration: none; }
-  .top img { width: 30px; height: 30px; border-radius: 8px; }
-  .top a.home { margin-left: auto; font-size: .95rem; }
-  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
-  h1 { font-size: 1.6rem; line-height: 1.3; margin: 0 0 4px; }
-  h2 { font-size: 1.15rem; margin: 2em 0 .5em; }
-  .meta, small { color: var(--muted); }
-  a { color: var(--accent); }
-  nav { margin: 16px 0 24px; }
-  table { width: 100%; border-collapse: collapse; font-size: .95rem; }
-  th, td { text-align: left; vertical-align: top; padding: 8px 6px; border-top: 1px solid var(--line); }
-  th { width: 34%; font-weight: 600; }
-  hr { border: 0; border-top: 1px solid var(--line); margin: 48px 0; }
-  li { margin: .4em 0; }
-</style>
-</head>
-<body>
-<header class="top"><div><a class="brand" href="./"><img src="../icon.svg" alt="">WaitCall</a><a class="home" href="../">← 홈 / Home</a></div></header>
-<main>
-<h1>개인정보처리방침</h1>
-<p class="meta">WaitCall (Android, <code>com.hoftlab.waitcall</code>) · 운영자 hoftlab · 최종 수정 2026-10-23</p>
-<nav><a href="#en">English</a></nav>
-
-<p>WaitCall("앱")은 통화 중 상대방의 마지막 인사를 끊지 않도록, 버튼을 누르면 몇 초 뒤 통화를 끝내 주는 Android 앱입니다. 앱은 회원 가입이 없고, 개발자 서버나 제3자에게 어떤 정보도 보내지 않습니다. 인터넷 권한이 없어 앱이 네트워크로 데이터를 전송할 수 없습니다. 광고와 분석 도구도 없습니다.</p>
-
-<h2>1. 수집하지 않는 정보</h2>
-<ul>
-  <li>전화번호, 연락처, 통화 기록, 통화 내용, 통화 녹음</li>
-  <li>위치, 계정 정보, 기기 식별자</li>
-</ul>
-<p>앱은 통화 상태를 확인하기 위해 전화번호를 읽지 않습니다.</p>
-
-<h2>2. 기기 안에서 쓰는 권한과 기능</h2>
-<table>
-  <tr><th>전화 상태 읽기 (READ_PHONE_STATE)</th><td>통화 중인지, 대기 전화가 있는지 확인합니다. 전화번호는 읽지 않습니다.</td></tr>
-  <tr><th>통화 종료 요청 (ANSWER_PHONE_CALLS)</th><td>예약 시간이 지나면 시스템에 통화 종료를 요청합니다. 기본 전화 앱은 바꾸지 않습니다.</td></tr>
-  <tr><th>알림 (POST_NOTIFICATIONS)</th><td>카운트다운과 결과를 알림으로 보여 줍니다.</td></tr>
-  <tr><th>다른 앱 위에 표시 (SYSTEM_ALERT_WINDOW, 선택)</th><td>통화 화면 위에 플로팅 버튼을 보여 줍니다. 사용자가 설정에서 직접 허용해야 하며, 거부해도 알림과 앱 화면으로 같은 기능을 쓸 수 있습니다.</td></tr>
-  <tr><th>마이크 음소거 설정 (MODIFY_AUDIO_SETTINGS)</th><td>카운트다운 동안 내 마이크를 끕니다(설정에서 끌 수 있음). 취소하거나 통화가 끝나면 바로 되돌립니다.</td></tr>
-  <tr><th>포그라운드 서비스, 진동, 잠금 방지</th><td>카운트다운을 진행하고 결과를 알리는 데만 씁니다.</td></tr>
-</table>
-
-<h2>3. 기기에 저장하는 설정값</h2>
-<p>지연 시간, 진동, 알림 표시, 마이크 음소거 여부, 자동화 사용 여부와 자동화 토큰, 그리고 카운트다운 중 마이크의 원래 상태를 기억하는 값을 기기 내부 저장소(SharedPreferences)에만 저장합니다. 이 값들은 외부로 전송되지 않습니다. 앱을 삭제하면 모두 지워지며, 클라우드 백업과 기기 간 이전에서도 제외됩니다.</p>
-
-<h2>4. 자동화 앱 연동 (선택, 기본 꺼짐)</h2>
-<p>설정에서 켜면 MacroDroid나 Tasker 같은 자동화 앱이 보내는 예약·취소 명령을 받을 수 있습니다. 명령은 설정에 있는 토큰이 일치할 때만 처리합니다. 앱이 자동화 앱으로 정보를 보내지는 않습니다.</p>
-
-<h2>5. 진단 기록</h2>
-<p>문제 확인을 위해 동작 이벤트를 시스템 로그(logcat)에 기록합니다. 이 기록은 기기에서 나가지 않으며, 개발자가 기기를 USB로 연결해 직접 확인할 때만 볼 수 있습니다.</p>
-
-<h2>6. 보관과 삭제</h2>
-<p>앱이 저장하는 설정값은 앱 데이터 삭제나 앱 제거 시 모두 지워집니다. 앱은 외부 저장소에 파일을 만들지 않으며 통화 기록을 남기지 않습니다.</p>
-
-<h2>7. 아동</h2>
-<p>앱은 만 13세 미만 아동을 대상으로 하지 않습니다.</p>
-
-<h2>8. 문의와 변경</h2>
-<p>문의: <a href="mailto:hoftlab@gmail.com">hoftlab@gmail.com</a>. 기능이나 정보 처리 방식이 바뀌면 이 페이지와 최종 수정일을 갱신합니다.</p>
-
-<hr id="en">
-
-<h1>Privacy Policy</h1>
-<p class="meta">WaitCall (Android, <code>com.hoftlab.waitcall</code>) · Operator: hoftlab · Last updated 2026-10-23</p>
-
-<p>WaitCall ("the app") is an Android app that ends a call a few seconds after you press a button, so you don't hang up on the other person's last goodbye. The app has no accounts and sends no information to the developer or any third party. It does not request the internet permission, so it cannot transmit data over a network. It has no ads and no analytics.</p>
-
-<h2>1. Information not collected</h2>
-<ul>
-  <li>Phone numbers, contacts, call history, call content, call recordings</li>
-  <li>Location, account information, device identifiers</li>
-</ul>
-<p>The app does not read phone numbers to check call state.</p>
-
-<h2>2. Permissions and features, used on the device</h2>
-<table>
-  <tr><th>Read phone state (READ_PHONE_STATE)</th><td>Checks whether a call is active and whether another call is waiting. Phone numbers are not read.</td></tr>
-  <tr><th>End calls (ANSWER_PHONE_CALLS)</th><td>When the countdown ends, asks the system to end the call. The app does not replace the default phone app.</td></tr>
-  <tr><th>Notifications (POST_NOTIFICATIONS)</th><td>Shows the countdown and results.</td></tr>
-  <tr><th>Display over other apps (SYSTEM_ALERT_WINDOW, optional)</th><td>Shows a floating button over the call screen. You must allow it in settings. If you decline, the same features are available from notifications and the app screen.</td></tr>
-  <tr><th>Microphone mute setting (MODIFY_AUDIO_SETTINGS)</th><td>Mutes your microphone during the countdown (can be turned off in settings). It is restored when you cancel or the call ends.</td></tr>
-  <tr><th>Foreground service, vibration, wake lock</th><td>Used only to run the countdown and report the result.</td></tr>
-</table>
-
-<h2>3. Settings stored on the device</h2>
-<p>Delay time, vibration, notification display, microphone mute, automation on/off, the automation token, and the microphone's original state during a countdown are stored only in the app's private storage (SharedPreferences). They are not sent anywhere. Uninstalling the app removes them, and they are excluded from cloud backup and device transfer.</p>
-
-<h2>4. Automation app integration (optional, off by default)</h2>
-<p>If you turn it on, automation apps such as MacroDroid or Tasker can send schedule and cancel commands. The app acts only when the token in settings matches. The app does not send information to automation apps.</p>
-
-<h2>5. Diagnostic log</h2>
-<p>To investigate problems, the app writes event messages to the system log (logcat). These logs stay on the device and can be read only when a developer connects the device by USB.</p>
-
-<h2>6. Retention and deletion</h2>
-<p>The stored settings are deleted when you clear the app's data or uninstall the app. The app creates no files on shared storage and keeps no call history.</p>
-
-<h2>7. Children</h2>
-<p>The app is not directed at children under 13.</p>
-
-<h2>8. Contact and changes</h2>
-<p>Contact: <a href="mailto:hoftlab@gmail.com">hoftlab@gmail.com</a>. This page and its date are updated when features or data handling change.</p>
-</main>
-</body>
-</html>
+:root { color-scheme: light dark; }
+body { max-width: 760px; margin: auto; padding: 32px 20px 64px; font: 16px/1.8 system-ui, sans-serif; }
+h1 { font-size: 1.6rem; line-height: 1.4; }
+p { margin: 1.6em 0; overflow-wrap: anywhere; }
+</style></head><body><main><h1>WaitCall 개인정보처리방침</h1>
+<p>운영자: hoftlab<br>문의: hoftlab@gmail.com<br>시행일: 2026-10-26<br>대상 앱: WaitCall (com.hoftlab.waitcall)</p>
+<p>WaitCall은 통화 종료를 예약하는 Android 앱입니다. 회원가입이나 로그인 없이 이용하며, 광고·분석 SDK를 포함하지 않습니다. 앱은 인터넷 권한을 요청하지 않고, 통화 정보나 설정을 개발자 서버 또는 제3자 서버로 전송하지 않습니다.</p>
+<p>1. 기기 안에서 처리하는 정보<br>통화 중인지와 통화 상태의 변화를 확인해 종료 예약을 진행하거나 취소합니다. 전화번호, 연락처, 통화 기록을 읽거나 수집하지 않으며, 음성을 녹음하거나 저장하지 않습니다. 마이크 끄기 기능은 시스템의 음소거 상태만 변경하며 음성 데이터를 읽지 않습니다.</p>
+<p>2. 사용하는 권한<br>• 전화 상태 확인(READ_PHONE_STATE): 통화 상태와 그 변화를 확인합니다.<br>• 통화 종료(ANSWER_PHONE_CALLS): 예약 시간이 지나면 시스템에 통화 종료를 요청합니다.<br>• 알림 및 실시간 알림: 통화 중 조작 버튼, 카운트다운과 결과를 표시합니다.<br>• 다른 앱 위에 표시(SYSTEM_ALERT_WINDOW, 선택): 통화 화면 위에 플로팅 버튼을 표시합니다.<br>• 오디오 설정 변경(MODIFY_AUDIO_SETTINGS): 설정이 켜져 있을 때 카운트다운 동안 마이크 음소거를 조절하고, 취소나 종료 시 복원을 시도합니다.<br>• 포그라운드 서비스·잠금 방지·진동: 카운트다운을 진행하고 진동으로 알립니다.<br>권한은 Android 설정에서 철회할 수 있습니다. 관련 권한을 거부하면 해당 기능이 제한됩니다.</p>
+<p>3. 기기에 저장하는 정보<br>지연 시간, 진동·알림·음소거·플로팅 버튼 설정, 타일 추가 상태, 플로팅 버튼 위치, 자동화 설정과 토큰, 마이크 음소거 복원에 필요한 상태를 앱 내부 저장소에 저장합니다. 앱은 클라우드 백업을 허용하지 않습니다.</p>
+<p>4. 자동화 연동<br>사용자가 켠 경우에만 MacroDroid·Tasker 등 다른 앱이 보내는 예약·취소 명령을 받습니다. 설정에 있는 토큰이 일치해야 처리하며, 통화 정보나 설정을 자동화 앱으로 보내지 않습니다. 토큰을 클립보드에 복사하거나 다른 앱에 입력하는 것은 사용자의 선택입니다.</p>
+<p>5. 진단 기록<br>전화번호나 통화 내용 없이 앱 동작 이벤트를 메모리와 Android 시스템 로그에 기록합니다. 메모리에는 최근 200개 항목까지 유지하며 앱 프로세스가 종료되면 사라집니다. 시스템 로그의 보관과 접근은 Android가 관리합니다. 앱은 진단 기록을 자동 전송하지 않습니다.</p>
+<p>6. 보관·삭제 및 문의<br>기기에 저장한 정보는 Android 설정에서 앱 데이터를 삭제하거나 앱을 제거하면 삭제됩니다. 개발자는 기기 안의 정보를 원격으로 조회하거나 삭제할 수 없습니다. 이메일로 문의하면 사용자가 직접 보낸 이메일 주소와 문의 내용을 답변 목적으로 처리하고, 처리 완료 후 더 이상 필요하지 않으면 삭제합니다. 이메일 서비스의 정보 처리는 해당 제공자의 정책을 따릅니다.</p>
+<p>7. 어린이와 청소년<br>앱은 어린이와 청소년을 포함한 이용자를 대상으로 합니다. 연령에 관계없이 같은 정보 처리 원칙을 적용하며, 광고·사용자 계정·음성 녹음·서버로의 앱 데이터 전송을 제공하지 않습니다. 문의 시 불필요한 개인정보를 보내지 않도록 하고, 필요한 경우 보호자와 함께 문의해 주세요.</p>
+<p>8. 방침 변경<br>기능이나 정보 처리 방식이 바뀌면 개인정보처리방침과 시행일을 갱신합니다. 문의는 hoftlab@gmail.com으로 보내 주세요.</p><hr><section lang="en"><h1>WaitCall Privacy Policy</h1>
+<p>Operator: hoftlab<br>Contact: hoftlab@gmail.com<br>Effective date: October 26, 2026<br>App: WaitCall (com.hoftlab.waitcall)</p>
+<p>WaitCall is an Android utility for scheduling the end of a phone call. It has no accounts, ads, or analytics SDKs. The app does not request internet access or send call information or settings to developer or third-party servers.</p>
+<p>1. Information processed on your device<br>The app checks whether a call is active and observes call-state changes to schedule or cancel a hangup. It does not read or collect phone numbers, contacts, or call history, or record or store audio. The microphone feature changes the system mute state without reading audio data.</p>
+<p>2. Permissions<br>• READ_PHONE_STATE: checks call state and changes.<br>• ANSWER_PHONE_CALLS: requests a hangup when the countdown ends.<br>• Notifications and live updates: displays actions, countdowns, and results.<br>• SYSTEM_ALERT_WINDOW (optional): displays a floating button over the call screen.<br>• MODIFY_AUDIO_SETTINGS: controls microphone muting during a countdown when enabled and attempts to restore it on cancellation or completion.<br>• Foreground service, wake lock, and vibration: runs the countdown and provides vibration feedback.<br>Permissions can be revoked in Android settings, which may limit related features.</p>
+<p>3. Local storage<br>The app stores delay, vibration, notification, mute, floating button and tile settings, floating button position, automation settings and token, and microphone restoration state in app-private storage. Cloud backup is disabled.</p>
+<p>4. Optional automation<br>When enabled by the user, the app accepts schedule and cancel commands from apps such as MacroDroid and Tasker only when the token matches. It does not send call information or settings to automation apps. Copying the token to the clipboard or entering it into another app is the user&#x27;s choice.</p>
+<p>5. Diagnostics<br>The app writes operating events, without phone numbers or call content, to memory and the Android system log. It keeps up to 200 entries in memory, which disappear when the process ends. Android manages system-log retention and access. Logs are not uploaded automatically.</p>
+<p>6. Retention, deletion, and support<br>Clear app data in Android settings or uninstall the app to delete locally stored information. The developer cannot remotely access or delete information on your device. If you email support, your email address and message are used to respond and deleted when no longer needed after resolving your request. The email provider&#x27;s own policies apply to its processing.</p>
+<p>7. Children and teenagers<br>The app is intended for users including children and teenagers. The same data practices apply at every age: no ads, user accounts, voice recording, or transmission of app data to servers. Avoid sending unnecessary personal information in support requests and involve a parent or guardian when appropriate.</p>
+<p>8. Changes<br>This policy and its effective date will be updated when features or data practices change. Contact hoftlab@gmail.com with questions.</p></section></main></body></html>
