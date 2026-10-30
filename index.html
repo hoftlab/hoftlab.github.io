@@ -39,6 +39,9 @@
   .app .desc { margin-top:12px; font-size:.95rem; }
   .tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; }
   .tag { display:inline-block; font-size:.8rem; font-weight:700; color:var(--accent); background:var(--chip); border-radius:999px; padding:3px 10px; }
+  .icare-cover { aspect-ratio:2 / 1; border-radius:16px; display:flex; align-items:center; justify-content:center; gap:18px; background:#fff1e9; color:#843e3b; font-size:1.8rem; font-weight:900; }
+  .icare-cover img { width:88px; height:88px; border-radius:22px; }
+  .icare-cover small { display:block; font-size:.57rem; letter-spacing:.11em; font-weight:700; color:#a86058; }
   .waitcall .tag { color:#46695f; background:#e8f1eb; }
   .waitcall .more { color:#46695f; }
   @media (prefers-color-scheme: dark) { .waitcall .tag { color:#9cc7b9; background:#20372b; } .waitcall .more { color:#9cc7b9; } }
@@ -110,10 +113,10 @@
       <span class="more" data-ko>사용 방법과 테스트 안내 →</span><span class="more" data-en>How it works &amp; testing status →</span>
     </a>
     <a class="app" href="icare/">
-      <img class="cover" src="icare/img/cover.webp" alt="">
-      <div class="row"><img class="ico" src="icare/img/icon.png" alt="">
+      <div class="icare-cover" aria-hidden="true"><img src="icare/img/icon-2026.png" alt=""><span>iCare <small>OUR FAMILY SCHEDULE</small></span></div>
+      <div class="row"><img class="ico" src="icare/img/icon-2026.png" alt="">
         <div><h2>iCare</h2>
-        <p data-ko>아이의 하루를, 함께 돌봐요 — 가족 시간표</p><p data-en>Look after your child's day, together — a family timetable</p></div></div>
+        <p data-ko>우리 아이 일정, 한눈에 쏙</p><p data-en>Your family schedule, all in one place</p></div></div>
       <p class="desc" data-ko>학교·학원 시간표를 가족이 함께 보고, 수업 전에 알림을 받아요. 광고 없이, 아이는 별칭으로.</p>
       <p class="desc" data-en>See school and academy timetables together as a family and get reminded before class. No ads, and children are registered by nickname.</p>
       <div class="tags"><span class="tag" data-ko>Android · 비공개 테스트 중</span><span class="tag" data-en>Android · Closed testing</span><span class="tag" data-ko>테스터 모집</span><span class="tag" data-en>Testers wanted</span></div>
