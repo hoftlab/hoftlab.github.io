@@ -1,7 +1,7 @@
 {
-  "version": "0.9.26",
-  "code": 33,
-  "notes": "사선 시점 2D 모드에서 리조트를 건설하고 운영해요 · 손가락으로 길을 그리고 지워요 · 계정 백업 안내 개선",
+  "version": "0.9.27",
+  "code": 34,
+  "notes": "손님이 가격·경관·취향까지 살펴보고 매장을 골라요 · 손님 없는 매장에 확인된 운영 정보 안내 · 알림 권한을 게임 시작 때 요청해요",
   "url": "https://play.google.com/store/apps/details?id=com.hoftlab.sunshore",
-  "min_version": "0.9.0"
+  "min_version": "0.9.27"
 }
