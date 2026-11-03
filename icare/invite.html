@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta property="og:title" content="iCare 가족 초대">
+  <meta property="og:description" content="iCare에서 초대를 열고 가족 시간표를 함께 확인하세요.">
+  <title>가족 초대 - iCare</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>iCare 가족 초대</h1>
+  <p id="description">카카오톡이나 문자에서 받은 초대 링크 전체를 다시 열어 주세요.</p>
+  <p id="invitation" hidden>초대 코드 <strong id="code"></strong></p>
+  <p><a id="open-app" hidden>iCare 앱에서 열기</a></p>
+  <p>최신 iCare를 설치하거나 업데이트한 뒤 받은 링크를 다시 열면 초대 코드를 가져올 수 있어요.</p>
+  <p><a href="https://play.google.com/store/apps/details?id=com.hoftlab.icare">Google Play에서 iCare 보기</a></p>
+  <p><a href="support">iCare 고객 지원</a></p>
+</main>
+<script>
+  const params = new URLSearchParams(location.hash.slice(1));
+  const kind = params.get('kind');
+  const code = (params.get('code') || '').toUpperCase().replace(/[\s-]/g, '');
+  if ((kind === 'account' || kind === 'viewer') && /^[23456789ABCDEFGHJKLMNPQRSTUVWXYZ]{8}$/.test(code)) {
+    document.getElementById('description').textContent = kind === 'viewer'
+      ? '자녀 폰에서 iCare를 열어 시간표를 연결하세요.'
+      : 'iCare를 열어 가족 시간표에 참여하세요.';
+    document.getElementById('code').textContent = code.slice(0, 4) + '-' + code.slice(4);
+    document.getElementById('invitation').hidden = false;
+    const open = document.getElementById('open-app');
+    open.href = 'icare://invite?' + new URLSearchParams({ kind, code });
+    open.hidden = false;
+  }
+</script>
+</body>
+</html>
