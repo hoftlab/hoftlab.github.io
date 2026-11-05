@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.hoftlab.icare",
+      "sha256_cert_fingerprints": [
+        "70:E9:DC:F3:C8:D0:7A:49:84:67:14:A9:0E:22:7A:77:4D:A6:40:F3:3C:C0:B7:09:3E:37:AD:5A:0F:91:DC:9A",
+        "02:57:11:B5:59:0F:01:1C:7D:23:1B:A0:DC:6C:55:60:9F:44:AF:21:03:4D:0A:AA:91:E3:C3:A9:E6:F3:1C:A9"
+      ]
+    }
+  }
+]
