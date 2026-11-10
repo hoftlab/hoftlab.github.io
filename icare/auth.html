@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex">
+  <title>로그인 안내 - iCare</title>
+  <!--
+    Supabase 'Site URL'로 쓰는 페이지. 로그인 창을 연 뒤 오래 지나(약 5분) 요청이 만료되는 등
+    Supabase가 앱으로 돌아갈 주소를 모를 때 이 페이지로 보낸다. 오류를 앱의 로그인 콜백 주소로 넘겨
+    앱이 안내 문구를 보여 주게 한다. 개발 프로젝트는 ?app=icare-dev 를 붙여 등록한다 (docs/site/README.md).
+  -->
+  <style>
+    :root { --bg: #FFF9F5; --surface: #FFFFFF; --text: #302A2B; --muted: #675B5D; --primary: #B64438; --soft: #FCE9E2; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: var(--bg); color: var(--text); line-height: 1.6; word-break: keep-all;
+      font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    }
+    main { width: 100%; max-width: 420px; padding: 32px 16px; text-align: center; }
+    img { width: 88px; height: 88px; border-radius: 22px; }
+    h1 { font-size: 1.45rem; margin: 20px 0 8px; }
+    p { margin: 0 0 12px; color: var(--muted); }
+    .button {
+      display: block; margin: 28px 0 16px; padding: 16px; border-radius: 999px;
+      background: var(--primary); color: #fff; font-weight: 700; font-size: 1.05rem; text-decoration: none;
+    }
+    .note { font-size: 0.9rem; background: var(--soft); border-radius: 16px; padding: 12px 14px; }
+    .help { font-size: 0.85rem; margin-top: 20px; }
+    .help a { color: var(--primary); }
+  </style>
+</head>
+<body>
+<main>
+  <img src="img/icon-2026.png" alt="iCare">
+  <h1 id="title">로그인을 마치지 못했어요</h1>
+  <p id="body">iCare로 돌아가 다시 시도해 주세요.</p>
+  <a class="button" id="back" href="icare://auth-callback?error=server_error">iCare로 돌아가기</a>
+  <p class="note">버튼을 눌러도 앱이 열리지 않으면 이 창을 닫고 iCare에서 로그인 버튼을 다시 눌러 주세요.</p>
+  <p class="help"><a href="support">iCare 고객 지원</a></p>
+</main>
+<script>
+  (function () {
+    var query = new URLSearchParams(location.search);
+    var hash = new URLSearchParams(location.hash.slice(1));
+    function read(key) { return query.get(key) || hash.get(key) || ''; }
+
+    // 앱 빌드별 스킴 (mobile/app.config.ts). 개발 프로젝트의 Site URL에만 ?app=icare-dev 가 붙는다
+    var schemes = ['icare', 'icare-dev', 'icare-preview'];
+    var scheme = schemes.indexOf(query.get('app')) >= 0 ? query.get('app') : 'icare';
+    var error = read('error') || 'server_error';
+    var description = read('error_description');
+
+    var title = '로그인을 마치지 못했어요';
+    var body = '잠시 후 iCare로 돌아가 다시 시도해 주세요.';
+    if (/expired/i.test(description)) {
+      title = '로그인 시간이 지났어요';
+      body = '로그인 창을 연 뒤 시간이 오래 지나 안전을 위해 취소됐어요. iCare로 돌아가 로그인 버튼을 다시 눌러 주세요.';
+    } else if (error === 'access_denied') {
+      title = '로그인을 취소했어요';
+      body = 'iCare로 돌아가 원하는 방식으로 다시 시작해 주세요.';
+    }
+    document.getElementById('title').textContent = title;
+    document.getElementById('body').textContent = body;
+
+    // 앱의 로그인 콜백 주소(mobile/src/features/auth/oauthCallback.ts)로 오류를 그대로 넘긴다
+    var back = scheme + '://auth-callback?' + new URLSearchParams({ error: error, error_description: description || error });
+    document.getElementById('back').href = back;
+    // 브라우저가 허락하면 바로 앱으로 돌아간다. 막히면 버튼을 누르면 된다
+    if (read('error')) setTimeout(function () { location.replace(back); }, 300);
+  })();
+</script>
+</body>
+</html>
