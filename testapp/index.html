@@ -53,11 +53,11 @@
     </div>
     <p class="lead">장난감들이 먼지를 치워 침대를 지키는 게임의 시험판입니다. 재미가 있는지 확인하려고 만들었고, 정식 출시본이 아닙니다.</p>
 
-    <a class="get" href="https://github.com/hoftlab/toyproto-download/releases/latest/download/testapp.apk">앱 파일 받기<small id="file">testapp.apk · 34.7MB</small></a>
+    <a class="get" href="https://github.com/hoftlab/toyproto-download/releases/latest/download/testapp.apk">앱 파일 받기<small id="file">testapp.apk · 35.0MB</small></a>
 
     <dl class="facts">
-      <dt>버전</dt><dd id="version">0.0.1-proto</dd>
-      <dt>올린 날</dt><dd id="date">2026-11-12</dd>
+      <dt>버전</dt><dd id="version">0.0.2-proto</dd>
+      <dt>올린 날</dt><dd id="date">2026-11-13</dd>
     </dl>
 
     <section class="card">
@@ -75,6 +75,7 @@
       <ul>
         <li>스테이지는 6개입니다. 지도 화면 아래의 두 단추로 두 가지 판(길 하나, 줄 셋)을 바꿔 가며 할 수 있습니다.</li>
         <li>광고도 저장도 없습니다. 앱을 끄면 진행한 것이 사라집니다.</li>
+        <li>배경 음악이 나옵니다. 끄는 단추는 아직 없어서 폰의 음량으로 조절합니다.</li>
         <li>무엇을 눌렀는지가 기기 안에만 기록됩니다. 앱은 인터넷 권한을 포함해 아무 권한도 요청하지 않으며, 기록을 밖으로 보내지 않습니다.</li>
         <li>64비트 Android 폰에서 됩니다. 실제 기기는 Galaxy Note20 한 대에서만 확인했습니다.</li>
         <li>시험용 서명으로 만든 파일입니다.</li>
@@ -96,7 +97,8 @@ fetch("https://api.github.com/repos/hoftlab/toyproto-download/releases/latest")
     var apk = (rel.assets || []).filter(function (a) { return a.name === "testapp.apk"; })[0];
     if (!apk) return;
     document.getElementById("version").textContent = String(rel.tag_name || "").replace(/^v/, "");
-    document.getElementById("date").textContent = String(apk.updated_at || rel.published_at || "").slice(0, 10);
+    var day = new Date(apk.updated_at || rel.published_at);  // 보는 사람의 시간대로 날짜를 적는다
+    if (!isNaN(day)) document.getElementById("date").textContent = day.getFullYear() + "-" + String(day.getMonth() + 1).padStart(2, "0") + "-" + String(day.getDate()).padStart(2, "0");
     document.getElementById("file").textContent = apk.name + " · " + (apk.size / 1048576).toFixed(1) + "MB";
   })
   .catch(function () {});
