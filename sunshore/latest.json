@@ -1,7 +1,7 @@
 {
-  "version": "0.9.30",
-  "code": 37,
-  "notes": "선쇼어 소식 알림이 생겼어요 · 행사나 새 소식을 휴대폰 알림으로 받아요 · 누르면 바로 게임이 열려요 · 밤과 게임 중에는 보내지 않아요",
+  "version": "0.9.31",
+  "code": 38,
+  "notes": "오늘의 미션과 이번 주 미션이 생겼어요 · 미션을 끝내고 조개를 모아 특별 장식을 열어요 · 붙어 있는 같은 가게를 합쳐 큰 건물로 · 도감이 그림 카드로 바뀌었어요",
   "url": "https://play.google.com/store/apps/details?id=com.hoftlab.sunshore",
   "min_version": "0.9.29"
 }
